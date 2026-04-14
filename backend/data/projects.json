@@ -1,0 +1,38 @@
+[
+  {
+    "id": "proj-001",
+    "title": "SmartInventory — AI-Powered Stock Manager",
+    "thumbnail": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    "description": "A full-stack inventory management system with ML-based demand forecasting. Built a real-time dashboard with WebSocket updates, automated reorder triggers, and an admin panel for multi-warehouse management.",
+    "github_url": "https://github.com/paragagnihotri/smart-inventory",
+    "contribution": "Designed the entire backend architecture using FastAPI and PostgreSQL. Implemented the demand forecasting module using scikit-learn. Set up Docker Compose for local development and GitHub Actions for CI/CD.",
+    "tags": ["Python", "FastAPI", "PostgreSQL", "React", "ML", "Docker"]
+  },
+  {
+    "id": "proj-002",
+    "title": "DevPulse — Developer Productivity Tracker",
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    "description": "A SaaS dashboard that aggregates GitHub, Jira, and Slack activity to give engineering teams visibility into productivity metrics, sprint velocity, and code review bottlenecks.",
+    "github_url": "https://github.com/paragagnihotri/devpulse",
+    "contribution": "Built the OAuth integrations for GitHub and Jira. Designed the metrics aggregation pipeline and REST API. Created interactive chart components using Recharts in Next.js.",
+    "tags": ["Next.js", "TypeScript", "Node.js", "OAuth", "Recharts", "PostgreSQL"]
+  },
+  {
+    "id": "proj-003",
+    "title": "ChatterBot — Real-Time Chat Application",
+    "thumbnail": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600&q=80",
+    "description": "A scalable real-time messaging platform supporting private DMs, group rooms, file sharing, and end-to-end encryption. Handles 10,000+ concurrent connections with horizontal scaling.",
+    "github_url": "https://github.com/paragagnihotri/chatterbot",
+    "contribution": "Architected the WebSocket server using FastAPI and Redis Pub/Sub for fan-out messaging. Implemented JWT-based authentication and rate limiting middleware.",
+    "tags": ["FastAPI", "WebSockets", "Redis", "React", "JWT", "Docker"]
+  },
+  {
+    "id": "proj-004",
+    "title": "CloudBilling — AWS Cost Analytics Tool",
+    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
+    "description": "An internal tool that parses AWS Cost Explorer data, maps costs to teams and services, and generates weekly reports with anomaly detection alerts sent via Slack.",
+    "github_url": "https://github.com/paragagnihotri/cloud-billing",
+    "contribution": "Wrote the AWS Cost Explorer ingestion scripts and anomaly detection logic. Built the Slack notification bot and automated weekly PDF report generation using ReportLab.",
+    "tags": ["Python", "AWS", "Boto3", "Pandas", "Slack API", "ReportLab"]
+  }
+]

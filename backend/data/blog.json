@@ -1,0 +1,52 @@
+[
+  {
+    "id": "blog-001",
+    "title": "Building a Production-Ready FastAPI Service in 2024",
+    "slug": "production-ready-fastapi-2024",
+    "thumbnail": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80",
+    "date": "2024-07-15",
+    "description": "A comprehensive walkthrough of structuring a FastAPI project for production — covering dependency injection, error handling, async patterns, database connection pooling, and deployment with Docker and Nginx.",
+    "content": "",
+    "tags": ["Python", "FastAPI", "Backend", "DevOps"]
+  },
+  {
+    "id": "blog-002",
+    "title": "Why I Switched from REST to GraphQL (and When I Switched Back)",
+    "slug": "rest-vs-graphql-lessons-learned",
+    "thumbnail": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
+    "date": "2024-05-02",
+    "description": "An honest reflection on adopting GraphQL for a mid-size SaaS product — the wins (flexible querying, reduced overfetching) and the pain points (N+1 problems, caching complexity) that eventually brought us back to REST for certain services.",
+    "content": "",
+    "tags": ["GraphQL", "REST", "API Design", "Architecture"]
+  },
+  {
+    "id": "blog-003",
+    "title": "Understanding Kubernetes Resource Limits: A Practical Guide",
+    "slug": "kubernetes-resource-limits-guide",
+    "thumbnail": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&q=80",
+    "date": "2024-03-18",
+    "description": "A hands-on guide to setting CPU and memory limits in Kubernetes, understanding QoS classes, avoiding OOMKilled pods, and right-sizing workloads using Vertical Pod Autoscaler recommendations.",
+    "content": "",
+    "tags": ["Kubernetes", "DevOps", "Cloud", "Infrastructure"]
+  },
+  {
+    "id": "blog-004",
+    "title": "PostgreSQL Query Optimisation: 10 Patterns That Made a Difference",
+    "slug": "postgresql-query-optimisation-patterns",
+    "thumbnail": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&q=80",
+    "date": "2023-11-09",
+    "description": "Ten concrete query and schema patterns I've used to cut P95 latency significantly in production PostgreSQL databases — covering index strategies, EXPLAIN ANALYZE interpretation, partial indexes, and JSONB optimisation.",
+    "content": "",
+    "tags": ["PostgreSQL", "Database", "Performance", "Backend"]
+  },
+  {
+    "id": "blog-005",
+    "title": "The Case for Boring Technology in Your Next Side Project",
+    "slug": "boring-technology-side-project",
+    "thumbnail": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80",
+    "date": "2023-08-22",
+    "description": "After chasing the shiny new framework on every side project and shipping nothing, I tried building with the most boring, proven stack I knew — and finally launched. Here's what I learned about the relationship between novelty and execution.",
+    "content": "",
+    "tags": ["Opinion", "Side Projects", "Engineering Culture"]
+  }
+]
