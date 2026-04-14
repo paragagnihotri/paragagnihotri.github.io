@@ -1,0 +1,84 @@
+{
+  "badges": [
+    {
+      "id": "badge-001",
+      "title": "AWS Certified Generative AI Deveoper - Professional",
+      "issuer": "Amazon Web Services",
+      "badge_url": "https://images.credly.com/size/680x680/images/52c6e5ac-9516-4944-a4df-e31b23c9bbf2/blob",
+      "public_link": "https://www.credly.com/badges/67c6b541-6bd6-4090-8f80-af7da86608e2/public_url",
+      "exam_link": "https://aws.amazon.com/certification/certified-generative-ai-developer-professional/"
+    },
+    {
+      "id": "badge-002",
+      "title": "AWS Certified Generative AI Deveoper - Professional (Early Adopter)",
+      "issuer": "Amazon Web Services",
+      "badge_url": "https://images.credly.com/size/680x680/images/9de9a2f7-3259-4720-bb74-095563bb1e49/blob",
+      "public_link": "https://www.credly.com/badges/37a49892-6946-4205-9353-9983c9ab1958/public_url",
+      "exam_link": "https://aws.amazon.com/certification/certified-generative-ai-developer-professional/"
+    },
+    {
+      "id": "badge-003",
+      "title": "AWS Certified Developer Associate",
+      "issuer": "Amazon Web Services",
+      "badge_url": "https://images.credly.com/size/680x680/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png",
+      "public_link": "https://www.credly.com/badges/7103338c-ca31-4ac0-8b3d-60b3e48a078e/public_url",
+      "exam_link": "https://aws.amazon.com/certification/certified-developer-associate/"
+    },
+    {
+      "id": "badge-004",
+      "title": "AWS Certified AI Practitioner - Foundational",
+      "issuer": "Amazon Web Services",
+      "badge_url": "https://images.credly.com/size/680x680/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png",
+      "public_link": "https://www.credly.com/badges/f1ddf7a9-24e3-450a-ae3f-b24e2a3032d8/public_url",
+      "exam_link": "https://aws.amazon.com/certification/certified-ai-practitioner/"
+    },
+    {
+      "id": "badge-005",
+      "title": "Cloud Essentials",
+      "issuer": "IBM",
+      "badge_url": "https://images.credly.com/size/680x680/images/5ee26427-f944-4182-b802-459462184c9a/image.png",
+      "public_link": "https://www.credly.com/badges/e0e555c7-2e46-46fa-aee0-02287fa5b577/public_url",
+      "exam_link": "https://cognitiveclass.ai/badges/"
+    },
+    {
+      "id": "badge-006",
+      "title": "Artificial Intelligence Fundamentals",
+      "issuer": "IBM SkillBuild",
+      "badge_url": "https://images.credly.com/size/680x680/images/82b908e1-fdcd-4785-9d32-97f11ccbcf08/image.png",
+      "public_link": "https://www.credly.com/badges/40b814ae-444b-458a-96f0-7c698707c2df/public_url",
+      "exam_link": "https://skillsbuild.org/adult-learners/digital-credentials"
+    }
+  ],
+  "certificates": [
+    {
+      "id": "cert-001",
+      "title": "Deep Learning Specialization",
+      "issuer": "Coursera / DeepLearning.AI",
+      "credential_id": "DLS-2023-XXXXXX",
+      "credential_url": "https://www.coursera.org/account/accomplishments/specialization/your-id",
+      "issue_date": "March 2023",
+      "exam_link": "https://www.coursera.org/specializations/deep-learning",
+      "thumbnail": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80"
+    },
+    {
+      "id": "cert-002",
+      "title": "Full Stack Web Development with React",
+      "issuer": "Coursera / The Hong Kong University of Science and Technology",
+      "credential_id": "FSWD-2022-XXXXXX",
+      "credential_url": "https://www.coursera.org/account/accomplishments/specialization/your-id",
+      "issue_date": "August 2022",
+      "exam_link": "https://www.coursera.org/specializations/full-stack-react",
+      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&q=80"
+    },
+    {
+      "id": "cert-003",
+      "title": "Python for Data Science and Machine Learning Bootcamp",
+      "issuer": "Udemy",
+      "credential_id": "UC-XXXXXXXXXX",
+      "credential_url": "https://www.udemy.com/certificate/your-id/",
+      "issue_date": "January 2021",
+      "exam_link": "https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/",
+      "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80"
+    }
+  ]
+}

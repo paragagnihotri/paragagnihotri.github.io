@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FDFAF6;
+  --fg: #2C1810;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+@layer components {
+  .section-heading {
+    @apply font-serif text-3xl font-semibold text-brown-900 mb-2;
+  }
+
+  .section-subheading {
+    @apply text-brown-500 text-base mb-10;
+  }
+
+  .card {
+    @apply bg-white border border-brown-200 rounded-2xl shadow-warm transition-shadow duration-300;
+  }
+
+  .card:hover {
+    @apply shadow-warm-md;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brown-700 text-cream px-5 py-2.5 rounded-lg text-sm font-medium
+           hover:bg-brown-800 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-brown-700 text-brown-700 px-5 py-2.5 rounded-lg text-sm font-medium
+           hover:bg-brown-700 hover:text-cream active:scale-95 transition-all duration-200;
+  }
+
+  .tag {
+    @apply inline-block bg-beige-100 text-brown-700 text-xs font-medium px-2.5 py-1 rounded-full;
+  }
+
+  .skill-pill {
+    @apply bg-brown-100 text-brown-800 text-sm px-3 py-1.5 rounded-full font-medium;
+  }
+
+  .nav-link {
+    @apply text-brown-600 font-medium hover:text-brown-900 transition-colors duration-200 relative;
+  }
+
+  .nav-link.active {
+    @apply text-brown-900;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 right-0 h-0.5 bg-brown-500 rounded-full;
+  }
+}

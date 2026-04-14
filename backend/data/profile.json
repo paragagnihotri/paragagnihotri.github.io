@@ -1,0 +1,74 @@
+{
+  "name": "Parag Agnihotri",
+  "title": "Associate Data Scientist",
+  "quote": "Building intelligent systems, one line at a time.",
+  "introduction": "I'm a passionate Software Engineer with expertise in designing scalable backend systems, building cloud-native applications, and delivering data-driven solutions. I thrive on turning complex problems into elegant, maintainable code — and I bring the same energy to every layer of the stack.",
+  "avatar": null,
+  "experiences": [
+    {
+      "company": "YASH Technologies Pvt. Ltd.",
+      "role": "Associate Data Scientist",
+      "start_date": "Aug 2024",
+      "end_date": "Present",
+      "description": "Led the architecture and development of a microservices platform serving 2M+ active users. Reduced API latency by 40% through query optimization and caching strategies. Mentored a team of 4 junior engineers and drove adoption of CI/CD best practices.",
+      "logo": "https://e7.pngegg.com/pngimages/91/303/png-clipart-yash-technologies-pvt-ltd-gitex-business-technology-business-text-trademark.png"
+    },
+    {
+      "company": "Smartknower Edtech Pvt. Ltd.",
+      "role": "Data Science Intern",
+      "start_date": "Jan 2024",
+      "end_date": "Jun 2024",
+      "description": "Built RESTful APIs and real-time data pipelines processing 50GB+ daily. Integrated third-party services (Stripe, Twilio, SendGrid) and contributed to a platform migration from monolith to microservices. Improved test coverage from 40% to 85%.",
+      "logo": "https://media.licdn.com/dms/image/v2/C560BAQEurnSUo3oWFw/company-logo_200_200/company-logo_200_200/0/1630603999936/smartknower_logo?e=2147483647&v=beta&t=fY0x5hraCuengeRA4Wq2_Qoynsz04qreKHFo17TYoRs"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "skills": [
+        { "name": "Python", "level": "Expert" },
+        { "name": "SQL", "level": "Advanced" },
+        { "name": "R", "level": "Beginner" }
+      ]
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "skills": [
+        { "name": "FastAPI", "level": "Expert" },
+        { "name": "Next.js", "level": "Advanced" },
+        { "name": "React", "level": "Advanced" },
+        { "name": "Django / DRF", "level": "Advanced" },
+        { "name": "Pandas / NumPy", "level": "Intermediate" }
+      ]
+    },
+    {
+      "category": "Databases",
+      "skills": [
+        { "name": "PostgreSQL", "level": "Advanced" },
+        { "name": "MongoDB", "level": "Advanced" },
+        { "name": "Redis", "level": "Intermediate" },
+        { "name": "Elasticsearch", "level": "Intermediate" }
+      ]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "skills": [
+        { "name": "AWS (EC2, S3, Lambda, RDS)", "level": "Advanced" },
+        { "name": "Docker", "level": "Advanced" },
+        { "name": "Kubernetes", "level": "Intermediate" },
+        { "name": "GitHub Actions / CI/CD", "level": "Advanced" },
+        { "name": "Terraform", "level": "Intermediate" }
+      ]
+    },
+    {
+      "category": "Core Concepts",
+      "skills": [
+        { "name": "System Design", "level": "Advanced" },
+        { "name": "Microservices Architecture", "level": "Advanced" },
+        { "name": "REST & GraphQL APIs", "level": "Expert" },
+        { "name": "Agile / Scrum", "level": "Advanced" },
+        { "name": "Test-Driven Development", "level": "Advanced" }
+      ]
+    }
+  ]
+}
