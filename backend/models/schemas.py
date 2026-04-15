@@ -21,6 +21,14 @@ class SkillCategory(BaseModel):
     skills: List[Skill]
 
 
+class Education(BaseModel):
+    institution: str
+    degree: str
+    specialization: str
+    start_date: str
+    end_date: str
+
+
 class Profile(BaseModel):
     name: str
     title: str
@@ -28,6 +36,7 @@ class Profile(BaseModel):
     introduction: str
     avatar: Optional[str] = None
     experiences: List[Experience]
+    education: List[Education]
     skills: List[SkillCategory]
 
 

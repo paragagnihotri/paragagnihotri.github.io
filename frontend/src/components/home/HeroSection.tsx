@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Quote } from "lucide-react";
 import type { Profile } from "@/types";
+import HeroButtons from "./HeroButtons";
 
 interface Props {
-  profile: Profile;
+  readonly profile: Profile;
 }
 
 export default function HeroSection({ profile }: Props) {
@@ -35,6 +36,9 @@ export default function HeroSection({ profile }: Props) {
           <p className="text-brown-700 text-base leading-relaxed max-w-xl">
             {profile.introduction}
           </p>
+
+          {/* Action buttons */}
+          <HeroButtons />
         </div>
 
         {/* Avatar */}
