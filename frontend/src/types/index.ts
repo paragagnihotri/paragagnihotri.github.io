@@ -17,6 +17,14 @@ export interface Experience {
   logo?: string;
 }
 
+export interface Education {
+  institution: string;
+  degree: string;
+  specialization: string;
+  start_date: string;
+  end_date: string;
+}
+
 export interface Profile {
   name: string;
   title: string;
@@ -24,6 +32,7 @@ export interface Profile {
   introduction: string;
   avatar?: string;
   experiences: Experience[];
+  education: Education[];
   skills: SkillCategory[];
 }
 

@@ -22,6 +22,22 @@
       "logo": "https://media.licdn.com/dms/image/v2/C560BAQEurnSUo3oWFw/company-logo_200_200/company-logo_200_200/0/1630603999936/smartknower_logo?e=2147483647&v=beta&t=fY0x5hraCuengeRA4Wq2_Qoynsz04qreKHFo17TYoRs"
     }
   ],
+  "education": [
+    {
+      "institution": "Acropolis Institute of Technology and Research, Indore",
+      "degree": "B.Tech",
+      "specialization": "Computer Science and Engineering - Data Science",
+      "start_date": "Nov 2020",
+      "end_date": "Jun 2024"
+    },
+    {
+      "institution": "Brilliant Academy, Indore",
+      "degree": "Higher Secondary Education",
+      "specialization": "PCM",
+      "start_date": "Apr 2019",
+      "end_date": "May 2020"
+    }
+  ],
   "skills": [
     {
       "category": "Programming Languages",

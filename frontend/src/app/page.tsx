@@ -4,6 +4,7 @@ export const dynamic = "force-dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
 import SkillsSection from "@/components/home/SkillsSection";
+import EducationSection from "@/components/home/EducationSection";
 
 export default async function HomePage() {
   const profile = await api.getProfile();
@@ -20,6 +21,8 @@ export default async function HomePage() {
       <ExperienceSection experiences={profile.experiences} />
 
       <SkillsSection skills={profile.skills} />
+
+      <EducationSection education={profile.education} />
     </>
   );
 }
