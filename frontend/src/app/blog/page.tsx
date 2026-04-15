@@ -1,6 +1,8 @@
 import { api } from "@/lib/api";
 import BlogCard from "@/components/blog/BlogCard";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Blog — Parag Agnihotri",
   description: "Articles and thoughts on software engineering by Parag Agnihotri.",

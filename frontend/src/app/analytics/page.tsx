@@ -1,4 +1,7 @@
 import { api } from "@/lib/api";
+
+export const dynamic = "force-dynamic";
+
 import {
   BookOpen,
   FolderGit2,

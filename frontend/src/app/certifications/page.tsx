@@ -2,6 +2,8 @@ import { api } from "@/lib/api";
 import BadgeCard from "@/components/certifications/BadgeCard";
 import CertificateCard from "@/components/certifications/CertificateCard";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Certifications — Parag Agnihotri",
   description: "Certifications and badges earned by Parag Agnihotri.",

@@ -1,6 +1,8 @@
 import { api } from "@/lib/api";
 import ProjectCard from "@/components/projects/ProjectCard";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Projects — Parag Agnihotri",
   description: "A showcase of projects built by Parag Agnihotri.",

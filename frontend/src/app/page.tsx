@@ -1,4 +1,6 @@
 import { api } from "@/lib/api";
+
+export const dynamic = "force-dynamic";
 import HeroSection from "@/components/home/HeroSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
 import SkillsSection from "@/components/home/SkillsSection";
