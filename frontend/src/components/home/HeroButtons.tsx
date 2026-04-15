@@ -7,7 +7,7 @@ import { Download, Mail, X, Send, CheckCircle, Loader2 } from 'lucide-react';
 // CONFIGURATION — fill these in after setting up EmailJS
 // See: https://dashboard.emailjs.com
 // ============================================================
-const RESUME_URL              = 'https://raw.githubusercontent.com/paragagnihotri/resume/blob/main/Parag_Agnihotri_Resume.pdf';
+const RESUME_URL              = 'https://raw.githubusercontent.com/paragagnihotri/resume/main/Parag_Agnihotri_Resume.pdf';
 const EMAILJS_PUBLIC_KEY      = 'oX_smBrjE63rAHHkL';
 const EMAILJS_SERVICE_ID      = 'service_c7oa3zk';
 const EMAILJS_TEMPLATE_NOTIFY = 'template_rxjj41t'; // notification email → you
