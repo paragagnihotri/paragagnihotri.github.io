@@ -331,6 +331,7 @@
     .footer-link:hover .footer-link-icon { background: var(--brown-700); }
     .footer-bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--brown-800); text-align: center; color: var(--brown-500); font-size: 0.75rem; }
     svg { display: inline-block; vertical-align: middle; }
+    p { text-align: justify; }
 
     /* ===== ANALYTICS PAGE ===== */
     .stats-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 4rem; }
@@ -525,6 +526,10 @@
     'data analytics': 'googleanalytics', 'system design': 'circuitverse',
     'microservices architecture': 'linkerd', 'rest apis': 'fastapi', 'agile / scrum': 'jira',
   };
+
+  function svgIcon(path) {
+    return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
+  }
 
   const BADGE_CLASS = {
     Expert: 'badge-expert', Advanced: 'badge-advanced',
@@ -855,9 +860,6 @@
       trending: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
     };
 
-    function svgIcon(path) {
-      return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
-    }
 
     var stats = [
       { iconPath: statIcon.folder,   label: 'Projects',             value: projects.length,             sub: 'Open-source &amp; professional work' },

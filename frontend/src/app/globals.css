@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  p {
+    text-align: justify;
+  }
+}
+
 :root {
   --bg: #FDFAF6;
   --fg: #2C1810;
