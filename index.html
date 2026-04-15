@@ -331,6 +331,37 @@
     .footer-link:hover .footer-link-icon { background: var(--brown-700); }
     .footer-bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--brown-800); text-align: center; color: var(--brown-500); font-size: 0.75rem; }
     svg { display: inline-block; vertical-align: middle; }
+
+    /* ===== ANALYTICS PAGE ===== */
+    .stats-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 4rem; }
+    @media (min-width: 640px)  { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+    .stat-card { padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+    .stat-icon {
+      width: 3rem; height: 3rem; border-radius: 0.75rem;
+      background: var(--brown-100); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; color: var(--brown-600);
+    }
+    .stat-value { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--brown-900); line-height: 1.2; }
+    .stat-label { color: var(--brown-600); font-size: 0.875rem; font-weight: 500; margin-top: 0.125rem; }
+    .stat-sub   { color: var(--brown-400); font-size: 0.75rem; margin-top: 0.25rem; }
+    .analytics-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 4rem; }
+    @media (min-width: 768px) { .analytics-grid { grid-template-columns: 1fr 1fr; } }
+    .analytics-card { padding: 1.5rem; }
+    .analytics-card-title { font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 600; color: var(--brown-900); margin-bottom: 1.25rem; }
+    .bar-row { margin-bottom: 1rem; }
+    .bar-row:last-child { margin-bottom: 0; }
+    .bar-label { display: flex; justify-content: space-between; font-size: 0.875rem; margin-bottom: 0.375rem; }
+    .bar-label-name  { color: var(--brown-700); font-weight: 500; }
+    .bar-label-count { color: var(--brown-400); }
+    .bar-track { height: 0.5rem; background: var(--brown-100); border-radius: 9999px; overflow: hidden; }
+    .bar-fill  { height: 100%; border-radius: 9999px; background: linear-gradient(to right, var(--brown-600), var(--beige-400)); transition: width 0.7s ease; }
+    .timeline-cards { display: flex; flex-direction: column; gap: 1rem; }
+    @media (min-width: 640px) { .timeline-cards { flex-direction: row; } }
+    .timeline-exp-card { flex: 1; background: var(--beige-100); border-radius: 0.75rem; padding: 1rem; border: 1px solid var(--beige-200); }
+    .timeline-exp-role    { font-weight: 600; color: var(--brown-900); font-size: 0.875rem; }
+    .timeline-exp-company { color: var(--brown-600); font-size: 0.75rem; margin-top: 0.125rem; }
+    .timeline-exp-dates   { color: var(--brown-400); font-size: 0.75rem; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
@@ -345,6 +376,7 @@
         <button class="nav-link"        id="nav-projects"       onclick="navigate('projects')">Projects</button>
         <button class="nav-link"        id="nav-certifications" onclick="navigate('certifications')">Certifications</button>
         <button class="nav-link"        id="nav-blog"           onclick="navigate('blog')">Blog</button>
+        <button class="nav-link"        id="nav-analytics"      onclick="navigate('analytics')">Analytics</button>
       </nav>
       <button class="mobile-toggle" id="mobile-btn" onclick="toggleMobile()" aria-label="Toggle menu">
         <svg id="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -362,6 +394,7 @@
       <button class="mobile-nav-link"        id="mnav-projects"       onclick="navigate('projects');closeMobile()">Projects</button>
       <button class="mobile-nav-link"        id="mnav-certifications" onclick="navigate('certifications');closeMobile()">Certifications</button>
       <button class="mobile-nav-link"        id="mnav-blog"           onclick="navigate('blog');closeMobile()">Blog</button>
+      <button class="mobile-nav-link"        id="mnav-analytics"      onclick="navigate('analytics');closeMobile()">Analytics</button>
     </nav>
   </div>
 </header>
@@ -371,6 +404,7 @@
   <div class="page" id="page-projects"></div>
   <div class="page" id="page-certifications"></div>
   <div class="page" id="page-blog"></div>
+  <div class="page" id="page-analytics"></div>
 </main>
 
 <!-- ========== FOOTER ========== -->
@@ -783,10 +817,118 @@
     el.innerHTML = html;
   }
 
+  /* ---- ANALYTICS ---- */
+  async function renderAnalytics() {
+    var el = document.getElementById('page-analytics');
+    el.innerHTML = loadingHtml();
+    var profile, projects, certData, posts;
+    try {
+      var results = await Promise.all([
+        fetchData('/api/v1/profile'),
+        fetchData('/api/v1/projects'),
+        fetchData('/api/v1/certifications'),
+        fetchData('/api/v1/blog'),
+      ]);
+      profile  = results[0];
+      projects = results[1];
+      certData = results[2];
+      posts    = results[3];
+    } catch(e) { console.error(e); el.innerHTML = errorHtml(); return; }
+
+    var totalSkills  = (profile.skills || []).reduce(function(acc, cat) { return acc + cat.skills.length; }, 0);
+    var expertSkills = (profile.skills || []).flatMap(function(c) { return c.skills.filter(function(s) { return s.level === 'Expert'; }); });
+    var topCategory  = (profile.skills || [])[0];
+
+    var LEVEL_WIDTH = { Expert: 100, Advanced: 80, Intermediate: 60, Beginner: 40 };
+
+    var html = '<div class="page-section"><div class="container">';
+    html += '<h1 class="section-heading">Analytics</h1>';
+    html += '<p class="section-subheading">A snapshot of my portfolio at a glance</p>';
+
+    /* ---- Stat cards ---- */
+    var statIcon = {
+      folder:   '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>',
+      award:    ICONS['award'],
+      book:     '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+      code:     '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+      star:     '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',
+      trending: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+    };
+
+    function svgIcon(path) {
+      return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>';
+    }
+
+    var stats = [
+      { iconPath: statIcon.folder,   label: 'Projects',             value: projects.length,             sub: 'Open-source &amp; professional work' },
+      { iconPath: statIcon.award,    label: 'Certifications',        value: certData.certificates.length, sub: '+ ' + certData.badges.length + ' digital badges' },
+      { iconPath: statIcon.book,     label: 'Blog Posts',            value: posts.length,                sub: 'Latest thoughts &amp; articles' },
+      { iconPath: statIcon.code,     label: 'Skills',                value: totalSkills,                 sub: 'Across ' + (profile.skills || []).length + ' categories' },
+      { iconPath: statIcon.star,     label: 'Expert-Level Skills',   value: expertSkills.length,         sub: expertSkills.map(function(s) { return esc(s.name); }).join(', ') },
+      { iconPath: statIcon.trending, label: 'Years of Experience',   value: (profile.experiences || []).length + '+', sub: 'Roles across different companies' },
+    ];
+
+    html += '<div class="stats-grid">';
+    stats.forEach(function(s) {
+      html += '<div class="card stat-card">';
+      html += '<div class="stat-icon">' + svgIcon(s.iconPath) + '</div>';
+      html += '<div><p class="stat-value">' + s.value + '</p><p class="stat-label">' + esc(s.label) + '</p><p class="stat-sub">' + s.sub + '</p></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    /* ---- Skills breakdown ---- */
+    html += '<div class="analytics-grid">';
+
+    /* Category distribution */
+    html += '<div class="card analytics-card">';
+    html += '<h2 class="analytics-card-title">Skills by Category</h2>';
+    (profile.skills || []).forEach(function(cat) {
+      var pct = totalSkills > 0 ? ((cat.skills.length / totalSkills) * 100).toFixed(1) : 0;
+      html += '<div class="bar-row">';
+      html += '<div class="bar-label"><span class="bar-label-name">' + esc(cat.category) + '</span><span class="bar-label-count">' + cat.skills.length + '</span></div>';
+      html += '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    /* Top category proficiency */
+    if (topCategory) {
+      html += '<div class="card analytics-card">';
+      html += '<h2 class="analytics-card-title">' + esc(topCategory.category) + ' &mdash; Proficiency</h2>';
+      topCategory.skills.forEach(function(skill) {
+        var pct = LEVEL_WIDTH[skill.level] || 50;
+        html += '<div class="bar-row">';
+        html += '<div class="bar-label"><span class="bar-label-name">' + esc(skill.name.trim()) + '</span><span class="bar-label-count">' + esc(skill.level || '') + '</span></div>';
+        html += '<div class="bar-track"><div class="bar-fill" style="width:' + pct + '%"></div></div>';
+        html += '</div>';
+      });
+      html += '</div>';
+    }
+
+    html += '</div>';
+
+    /* ---- Career timeline ---- */
+    html += '<div class="card analytics-card">';
+    html += '<h2 class="analytics-card-title">Career Timeline</h2>';
+    html += '<div class="timeline-cards">';
+    (profile.experiences || []).forEach(function(exp) {
+      html += '<div class="timeline-exp-card">';
+      html += '<p class="timeline-exp-role">' + esc(exp.role) + '</p>';
+      html += '<p class="timeline-exp-company">' + esc(exp.company) + '</p>';
+      html += '<p class="timeline-exp-dates">' + esc(exp.start_date) + ' &mdash; ' + esc(exp.end_date) + '</p>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+
+    html += '</div></div>';
+    el.innerHTML = html;
+  }
+
   /* ============================================================
      NAVIGATION
      ============================================================ */
-  var PAGES = ['home', 'projects', 'certifications', 'blog'];
+  var PAGES = ['home', 'projects', 'certifications', 'blog', 'analytics'];
   var renderedPages = {};
 
   function navigate(page) {
@@ -823,6 +965,7 @@
       else if (page === 'projects')       renderProjects();
       else if (page === 'certifications') renderCertifications();
       else if (page === 'blog')           renderBlog();
+      else if (page === 'analytics')      renderAnalytics();
     }
   }
 
