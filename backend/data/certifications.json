@@ -52,33 +52,33 @@
   "certificates": [
     {
       "id": "cert-001",
-      "title": "Deep Learning Specialization",
-      "issuer": "Coursera / DeepLearning.AI",
-      "credential_id": "DLS-2023-XXXXXX",
-      "credential_url": "https://www.coursera.org/account/accomplishments/specialization/your-id",
-      "issue_date": "March 2023",
-      "exam_link": "https://www.coursera.org/specializations/deep-learning",
-      "thumbnail": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&q=80"
+      "title": "AWS Certified Generative AI Deveoper - Professional",
+      "issuer": "Amazon Web Services",
+      "credential_id": "5b96fb9125b84ba28f7a17efb5538edd",
+      "credential_url": "https://cp.certmetrics.com/amazon/en/public/verify/credential/5b96fb9125b84ba28f7a17efb5538edd",
+      "issue_date": "March 2026",
+      "exam_link": "https://aws.amazon.com/certification/certified-generative-ai-developer-professional/",
+      "thumbnail": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2023/02/16/aws_bp_primarylogo_01.png"
     },
     {
       "id": "cert-002",
-      "title": "Full Stack Web Development with React",
-      "issuer": "Coursera / The Hong Kong University of Science and Technology",
-      "credential_id": "FSWD-2022-XXXXXX",
-      "credential_url": "https://www.coursera.org/account/accomplishments/specialization/your-id",
-      "issue_date": "August 2022",
-      "exam_link": "https://www.coursera.org/specializations/full-stack-react",
-      "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&q=80"
+      "title": "AWS Certified Developer Associate",
+      "issuer": "Amazon Web Services",
+      "credential_id": "fc180bb606d243aa8b600dda0cc26e0d",
+      "credential_url": "https://cp.certmetrics.com/amazon/en/public/verify/credential/fc180bb606d243aa8b600dda0cc26e0d",
+      "issue_date": "March 2025",
+      "exam_link": "https://aws.amazon.com/certification/certified-developer-associate/",
+      "thumbnail": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2023/02/16/aws_bp_primarylogo_01.png"
     },
     {
       "id": "cert-003",
-      "title": "Python for Data Science and Machine Learning Bootcamp",
-      "issuer": "Udemy",
-      "credential_id": "UC-XXXXXXXXXX",
-      "credential_url": "https://www.udemy.com/certificate/your-id/",
-      "issue_date": "January 2021",
-      "exam_link": "https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/",
-      "thumbnail": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80"
+      "title": "AWS Certified AI Practitioner - Foundational",
+      "issuer": "Amazon Web Services",
+      "credential_id": "3426d27bca9c4f3c9f93d049ac6ac57a",
+      "credential_url": "https://cp.certmetrics.com/amazon/en/public/verify/credential/3426d27bca9c4f3c9f93d049ac6ac57a",
+      "issue_date": "May 2025",
+      "exam_link": "https://aws.amazon.com/certification/certified-ai-practitioner/",
+      "thumbnail": "https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2023/02/16/aws_bp_primarylogo_01.png"
     }
   ]
 }
