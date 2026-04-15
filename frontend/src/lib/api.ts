@@ -7,10 +7,15 @@ import type {
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
+if (!BASE_URL) {
+  throw new Error("NEXT_PUBLIC_API_URL environment variable is not set.");
+}
+
 async function fetchJSON<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE_URL}${path}`, { cache: "no-store" });
+  const url = `${BASE_URL}${path}`;
+  const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) {
-    throw new Error(`API error ${res.status} for ${path}`);
+    throw new Error(`API error ${res.status} fetching ${url}`);
   }
   return res.json() as Promise<T>;
 }
