@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parag Agnihotri — Portfolio</title>
+  <meta name="description" content="Personal portfolio of Parag Agnihotri — Data Scientist specialising in Generative AI, Agentic AI, and cloud infrastructure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --cream: #FDFAF6;
+      --beige-50: #FDFAF6; --beige-100: #F5ECD7; --beige-200: #EDD9B7;
+      --beige-300: #E0C49A; --beige-400: #D4A574; --beige-500: #C4956A;
+      --brown-50: #FAF5EE; --brown-100: #F0E6D3; --brown-200: #E8D5B7;
+      --brown-300: #D4B896; --brown-400: #C4956A; --brown-500: #A67C52;
+      --brown-600: #8B5E3C; --brown-700: #6B4226; --brown-800: #5C3D2E; --brown-900: #2C1810;
+      --shadow-warm: 0 2px 16px 0 rgba(107,66,38,0.08);
+      --shadow-warm-md: 0 4px 24px 0 rgba(107,66,38,0.12);
+      --shadow-warm-lg: 0 8px 40px 0 rgba(107,66,38,0.16);
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--cream); color: var(--brown-900);
+      -webkit-font-smoothing: antialiased; min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    a { text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font-family: inherit; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .animate-fade-up { animation: fadeUp 0.5s ease-out both; }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+    @media (min-width: 640px)  { .container { padding: 0 1.5rem; } }
+    @media (min-width: 1024px) { .container { padding: 0 2rem; } }
+    main { flex: 1; }
+
+    /* ===== SPA PAGES ===== */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background-color: rgba(253,250,246,0.9); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--brown-200);
+    }
+    .navbar-inner { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+    .nav-logo {
+      font-family: 'Playfair Display', Georgia, serif; font-weight: 600;
+      font-size: 1.25rem; color: var(--brown-900); letter-spacing: -0.025em;
+      transition: color 0.2s; cursor: pointer; background: none; border: none;
+    }
+    .nav-logo:hover { color: var(--brown-700); }
+    nav.desktop { display: none; align-items: center; gap: 2rem; }
+    @media (min-width: 768px) { nav.desktop { display: flex; } }
+    .nav-link {
+      color: var(--brown-600); font-weight: 500; font-size: 0.875rem;
+      transition: color 0.2s; position: relative; padding-bottom: 4px;
+      cursor: pointer; background: none; border: none;
+    }
+    .nav-link:hover { color: var(--brown-900); }
+    .nav-link.active { color: var(--brown-900); }
+    .nav-link.active::after {
+      content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+      height: 2px; background: var(--brown-500); border-radius: 9999px;
+    }
+    .mobile-toggle {
+      display: flex; padding: 0.5rem; color: var(--brown-700);
+      border-radius: 0.5rem; background: none; border: none; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .mobile-toggle:hover { background: var(--brown-100); }
+    @media (min-width: 768px) { .mobile-toggle { display: none; } }
+    .mobile-menu { display: none; border-top: 1px solid var(--brown-200); background: var(--cream); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu nav { display: flex; flex-direction: column; padding: 0.75rem 1rem; gap: 0.25rem; }
+    .mobile-nav-link {
+      padding: 0.5rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem;
+      font-weight: 500; transition: all 0.2s; color: var(--brown-600);
+      cursor: pointer; background: none; border: none; text-align: left;
+    }
+    .mobile-nav-link:hover { background: var(--brown-50); color: var(--brown-900); }
+    .mobile-nav-link.active { background: var(--brown-100); color: var(--brown-900); }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: white; border: 1px solid var(--brown-200);
+      border-radius: 1rem; box-shadow: var(--shadow-warm); transition: box-shadow 0.3s;
+    }
+    .card:hover { box-shadow: var(--shadow-warm-md); }
+
+    /* ===== BUTTONS ===== */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--brown-700); color: var(--cream);
+      padding: 0.625rem 1.25rem; border-radius: 0.5rem;
+      font-size: 0.875rem; font-weight: 500; transition: all 0.2s;
+      cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--brown-800); }
+    .btn-primary:active { transform: scale(0.95); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--brown-700); color: var(--brown-700);
+      padding: 0.625rem 1.25rem; border-radius: 0.5rem;
+      font-size: 0.875rem; font-weight: 500; transition: all 0.2s;
+      cursor: pointer; background: none; text-decoration: none;
+    }
+    .btn-outline:hover { background: var(--brown-700); color: var(--cream); }
+    .btn-outline:active { transform: scale(0.95); }
+
+    /* ===== TAGS ===== */
+    .tag {
+      display: inline-block; background: var(--beige-100); color: var(--brown-700);
+      font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.625rem; border-radius: 9999px;
+    }
+
+    /* ===== SECTION HEADINGS ===== */
+    .section-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.875rem; font-weight: 600; color: var(--brown-900); margin-bottom: 0.5rem;
+    }
+    .section-subheading { color: var(--brown-500); font-size: 1rem; margin-bottom: 2.5rem; }
+
+    /* ===== LOADING / ERROR ===== */
+    .loading {
+      display: flex; align-items: center; justify-content: center;
+      padding: 5rem 0; color: var(--brown-400); font-size: 0.875rem;
+    }
+    .spinner {
+      width: 1.5rem; height: 1.5rem; border: 2px solid var(--brown-200);
+      border-top-color: var(--brown-500); border-radius: 50%;
+      animation: spin 0.7s linear infinite; margin-right: 0.75rem; flex-shrink: 0;
+    }
+    .error-msg { color: var(--brown-400); text-align: center; padding: 5rem 0; font-size: 0.875rem; }
+
+    /* ===== HOME — HERO ===== */
+    .hero-section { padding: 5rem 0; }
+    .hero-inner { display: flex; flex-direction: column-reverse; align-items: center; gap: 3rem; }
+    @media (min-width: 768px) { .hero-inner { flex-direction: row; } }
+    .hero-text { flex: 1; }
+    .hero-quote { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 2rem; }
+    .hero-quote-icon { color: var(--brown-400); flex-shrink: 0; margin-top: 2px; }
+    .hero-quote-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.125rem; font-style: italic; color: var(--brown-500); }
+    .hero-name { font-family: 'Playfair Display', Georgia, serif; font-size: 3rem; font-weight: 700; color: var(--brown-900); line-height: 1.2; margin-bottom: 0.75rem; }
+    @media (min-width: 640px) { .hero-name { font-size: 3.75rem; } }
+    .hero-title { color: var(--brown-500); font-size: 1.25rem; font-weight: 500; margin-bottom: 1.5rem; }
+    .hero-intro { color: var(--brown-700); font-size: 1rem; line-height: 1.75; max-width: 36rem; }
+    .avatar-wrapper { flex-shrink: 0; }
+    .avatar {
+      width: 14rem; height: 14rem; border-radius: 9999px; background: var(--brown-100);
+      border: 4px solid var(--brown-200); box-shadow: var(--shadow-warm-lg);
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    @media (min-width: 768px) { .avatar { width: 16rem; height: 16rem; } }
+    .avatar-initial { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-weight: 700; color: var(--brown-300); user-select: none; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .section-divider-line-h { border-top: 1px solid var(--brown-200); }
+
+    /* ===== HOME — EXPERIENCE ===== */
+    .experience-section { padding: 4rem 0; }
+    .timeline-wrapper { position: relative; }
+    .timeline-v-line {
+      position: absolute; left: 1.25rem; top: 0; bottom: 0;
+      width: 1px; background: var(--brown-200); display: none;
+    }
+    @media (min-width: 640px) { .timeline-v-line { display: block; } }
+    .timeline-items { display: flex; flex-direction: column; gap: 2.5rem; }
+    .timeline-item { position: relative; display: flex; gap: 1.5rem; }
+    @media (min-width: 640px) { .timeline-item { padding-left: 3.5rem; } }
+    .timeline-dot {
+      display: none; position: absolute; left: 0; top: 0.25rem;
+      width: 2.5rem; height: 2.5rem; border-radius: 9999px;
+      background: var(--brown-100); border: 2px solid var(--brown-300);
+      align-items: center; justify-content: center; flex-shrink: 0;
+      box-shadow: var(--shadow-warm); color: var(--brown-600);
+    }
+    @media (min-width: 640px) { .timeline-dot { display: flex; } }
+    .exp-card { flex: 1; padding: 1.5rem; }
+    .exp-header {
+      display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem;
+    }
+    @media (min-width: 640px) { .exp-header { flex-direction: row; align-items: flex-start; justify-content: space-between; } }
+    .exp-role { font-size: 1.125rem; font-weight: 600; color: var(--brown-900); }
+    .exp-company { color: var(--brown-600); font-weight: 500; }
+    .exp-dates { display: flex; align-items: center; gap: 0.375rem; font-size: 0.875rem; color: var(--brown-400); white-space: nowrap; }
+    .exp-desc { color: var(--brown-700); font-size: 0.875rem; line-height: 1.625; }
+
+    /* ===== HOME — SKILLS ===== */
+    .skills-section { background: rgba(240,230,211,0.5); padding: 3rem 0; }
+    .skills-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 1024px) { .skills-grid { grid-template-columns: 1fr 1fr; } }
+    .skill-cat-card { background: white; border: 1px solid var(--brown-200); border-radius: 1rem; padding: 1.25rem; box-shadow: var(--shadow-warm); }
+    .skill-cat-card.full-width { grid-column: 1 / -1; }
+    .cat-label { font-size: 0.75rem; font-weight: 600; color: var(--brown-500); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+    .skill-tiles { display: grid; gap: 0.5rem; grid-template-columns: repeat(3, 1fr); }
+    @media (min-width: 640px) { .skill-tiles { grid-template-columns: repeat(4, 1fr); } }
+    .skill-tiles.wide { grid-template-columns: repeat(3, 1fr); }
+    @media (min-width: 640px) { .skill-tiles.wide { grid-template-columns: repeat(5, 1fr); } }
+    @media (min-width: 768px) { .skill-tiles.wide { grid-template-columns: repeat(6, 1fr); } }
+    @media (min-width: 1024px) { .skill-tiles.wide { grid-template-columns: repeat(9, 1fr); } }
+    .skill-tile {
+      border: 1px solid var(--brown-200); border-radius: 1rem;
+      padding: 0.625rem 0.375rem; display: flex; flex-direction: column;
+      align-items: center; gap: 0.375rem; text-align: center;
+      background: white; box-shadow: var(--shadow-warm); transition: box-shadow 0.3s;
+    }
+    .skill-tile:hover { box-shadow: var(--shadow-warm-md); }
+    .skill-icon { width: 1.75rem; height: 1.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .skill-icon img { width: 1.75rem; height: 1.75rem; object-fit: contain; }
+    .skill-icon-fallback {
+      width: 1.75rem; height: 1.75rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700;
+    }
+    .skill-name { color: var(--brown-900); font-size: 0.65rem; font-weight: 500; line-height: 1.3; text-align: center; flex: 1; }
+    .skill-badge { font-size: 0.6rem; padding: 0.125rem 0.4rem; border-radius: 9999px; font-weight: 600; line-height: 1.4; }
+    .badge-expert       { background: var(--brown-700); color: var(--cream); }
+    .badge-advanced     { background: var(--brown-500); color: var(--cream); }
+    .badge-intermediate { background: var(--beige-400); color: var(--brown-900); }
+    .badge-beginner     { background: var(--beige-200); color: var(--brown-700); }
+
+    /* ===== PROJECTS PAGE ===== */
+    .page-section { padding: 4rem 0; }
+    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 768px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+    .project-card { display: flex; flex-direction: column; overflow: hidden; }
+    .project-thumb { position: relative; height: 12rem; background: var(--brown-100); overflow: hidden; }
+    .project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .project-card:hover .project-thumb img { transform: scale(1.05); }
+    .project-thumb-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--beige-100), var(--brown-200));
+    }
+    .project-thumb-placeholder span { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--brown-300); }
+    .project-content { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 0.75rem; }
+    .project-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--brown-900); margin-bottom: 0.5rem; line-height: 1.3; }
+    .project-desc { color: var(--brown-600); font-size: 0.875rem; line-height: 1.625; margin-bottom: 1rem; flex: 1; }
+    .project-contrib { background: var(--beige-100); border-radius: 0.75rem; padding: 1rem; margin-bottom: 1.25rem; border: 1px solid var(--beige-200); }
+    .project-contrib-label { font-size: 0.75rem; font-weight: 600; color: var(--brown-500); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.375rem; }
+    .project-contrib-text { color: var(--brown-700); font-size: 0.875rem; line-height: 1.625; }
+
+    /* ===== CERTIFICATIONS PAGE ===== */
+    .badges-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 4rem; }
+    @media (min-width: 640px)  { .badges-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1024px) { .badges-grid { grid-template-columns: repeat(4, 1fr); } }
+    .badge-card { padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .badge-img-link {
+      display: block; margin-bottom: 1rem; border-radius: 9999px; overflow: hidden;
+      width: 7rem; height: 7rem; background: var(--beige-100);
+      border: 2px solid var(--beige-200); box-shadow: var(--shadow-warm);
+      transition: border-color 0.2s;
+    }
+    .badge-img-link:hover { border-color: var(--brown-400); }
+    .badge-img-link img { width: 100%; height: 100%; object-fit: contain; padding: 0.5rem; transition: transform 0.3s; }
+    .badge-card:hover .badge-img-link img { transform: scale(1.05); }
+    .badge-title { font-weight: 600; color: var(--brown-900); font-size: 0.875rem; line-height: 1.3; margin-bottom: 0.25rem; }
+    .badge-issuer { color: var(--brown-500); font-size: 0.75rem; margin-bottom: 1rem; }
+    .badge-actions { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: auto; }
+    .certs-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .cert-card { display: flex; flex-direction: column; overflow: hidden; }
+    @media (min-width: 640px) { .cert-card { flex-direction: row; } }
+    .cert-thumb { height: 9rem; background: var(--brown-100); overflow: hidden; position: relative; }
+    @media (min-width: 640px) { .cert-thumb { width: 11rem; flex-shrink: 0; height: auto; } }
+    .cert-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .cert-card:hover .cert-thumb img { transform: scale(1.05); }
+    .cert-content { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+    .cert-title { font-family: 'Playfair Display', serif; font-size: 1.125rem; font-weight: 600; color: var(--brown-900); margin-bottom: 0.25rem; line-height: 1.3; }
+    .cert-issuer { color: var(--brown-500); font-size: 0.875rem; font-weight: 500; margin-bottom: 1rem; }
+    .cert-meta { display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; color: var(--brown-500); margin-bottom: 1.25rem; }
+    .cert-meta-item { display: flex; align-items: center; gap: 0.375rem; }
+    .cert-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: auto; }
+    .section-sub-heading { display: flex; align-items: center; gap: 0.75rem; font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--brown-800); margin-bottom: 1.5rem; }
+    .section-sub-heading-line { width: 2rem; height: 1px; background: var(--brown-300); display: inline-block; }
+
+    /* ===== BLOG PAGE ===== */
+    .blog-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .blog-card { display: flex; flex-direction: column; overflow: hidden; }
+    @media (min-width: 640px) { .blog-card { flex-direction: row; } }
+    .blog-thumb { height: 11rem; background: var(--brown-100); overflow: hidden; position: relative; }
+    @media (min-width: 640px) { .blog-thumb { width: 14rem; flex-shrink: 0; height: auto; } }
+    .blog-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .blog-card:hover .blog-thumb img { transform: scale(1.05); }
+    .blog-content { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+    .blog-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-bottom: 0.75rem; }
+    .blog-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--brown-900); margin-bottom: 0.5rem; line-height: 1.3; transition: color 0.2s; }
+    .blog-card:hover .blog-title { color: var(--brown-700); }
+    .blog-date { display: flex; align-items: center; gap: 0.375rem; color: var(--brown-400); font-size: 0.75rem; margin-bottom: 0.75rem; }
+    .blog-desc { color: var(--brown-600); font-size: 0.875rem; line-height: 1.625; flex: 1; }
+    .blog-readmore { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--brown-100); }
+    .blog-readmore-link { display: inline-flex; align-items: center; gap: 0.375rem; color: var(--brown-600); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .blog-card:hover .blog-readmore-link { color: var(--brown-900); }
+    .blog-arrow { display: inline-block; transition: transform 0.2s; }
+    .blog-card:hover .blog-arrow { transform: translateX(4px); }
+
+    /* ===== FOOTER ===== */
+    footer { background: var(--brown-900); color: var(--beige-200); margin-top: 5rem; }
+    .footer-inner { padding: 3rem 0; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+    @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(3, 1fr); } }
+    .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--cream); margin-bottom: 0.75rem; }
+    .footer-brand-desc { color: var(--brown-400); font-size: 0.875rem; line-height: 1.625; margin-bottom: 0.5rem; }
+    .footer-location { display: flex; align-items: center; gap: 0.5rem; color: var(--brown-400); font-size: 0.875rem; }
+    .footer-section-label { font-size: 0.75rem; font-weight: 600; color: var(--beige-300); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--brown-300); font-size: 0.875rem; transition: color 0.2s; text-decoration: none;
+    }
+    .footer-link:hover { color: var(--cream); }
+    .footer-link-icon {
+      width: 2rem; height: 2rem; border-radius: 9999px; background: var(--brown-800);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s;
+    }
+    .footer-link:hover .footer-link-icon { background: var(--brown-700); }
+    .footer-bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--brown-800); text-align: center; color: var(--brown-500); font-size: 0.75rem; }
+    svg { display: inline-block; vertical-align: middle; }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header>
+  <div class="container">
+    <div class="navbar-inner">
+      <button class="nav-logo" onclick="navigate('home')">Parag's Portfolio</button>
+      <nav class="desktop" aria-label="Main navigation">
+        <button class="nav-link active" id="nav-home"           onclick="navigate('home')">Home</button>
+        <button class="nav-link"        id="nav-projects"       onclick="navigate('projects')">Projects</button>
+        <button class="nav-link"        id="nav-certifications" onclick="navigate('certifications')">Certifications</button>
+        <button class="nav-link"        id="nav-blog"           onclick="navigate('blog')">Blog</button>
+      </nav>
+      <button class="mobile-toggle" id="mobile-btn" onclick="toggleMobile()" aria-label="Toggle menu">
+        <svg id="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+        <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <nav aria-label="Mobile navigation">
+      <button class="mobile-nav-link active" id="mnav-home"           onclick="navigate('home');closeMobile()">Home</button>
+      <button class="mobile-nav-link"        id="mnav-projects"       onclick="navigate('projects');closeMobile()">Projects</button>
+      <button class="mobile-nav-link"        id="mnav-certifications" onclick="navigate('certifications');closeMobile()">Certifications</button>
+      <button class="mobile-nav-link"        id="mnav-blog"           onclick="navigate('blog');closeMobile()">Blog</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page active" id="page-home"></div>
+  <div class="page" id="page-projects"></div>
+  <div class="page" id="page-certifications"></div>
+  <div class="page" id="page-blog"></div>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">Parag Agnihotri</p>
+          <p class="footer-brand-desc">Data Scientist passionate about building scalable systems and elegant solutions.</p>
+          <div class="footer-location">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--brown-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Indore (M.P), India</span>
+          </div>
+        </div>
+        <div>
+          <p class="footer-section-label">Contact</p>
+          <ul class="footer-links">
+            <li>
+              <a href="tel:+918889656366" class="footer-link">
+                <span class="footer-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.53 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                <span>(+91) 8889656366</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:agnihotriparag2201@gmail.com" class="footer-link">
+                <span class="footer-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                <span>agnihotriparag2201@gmail.com</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-section-label">Social</p>
+          <ul class="footer-links">
+            <li>
+              <a href="https://github.com/paragagnihotri" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <span class="footer-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span>
+                <span>agnihotriparag22</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/agnihotriparag" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <span class="footer-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></span>
+                <span>agnihotriparag</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com/agnihotriiparag" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <span class="footer-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span>
+                <span>@agnihotriiparag</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; <span id="footer-year"></span> Parag Agnihotri. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     CONFIGURATION
+     ============================================================ */
+  const API_BASE = 'https://parag-portfolio-backend.onrender.com';
+
+  /* ============================================================
+     DATA CACHE  (avoids re-fetching on page switches)
+     ============================================================ */
+  const cache = {};
+
+  async function fetchData(endpoint) {
+    if (cache[endpoint]) return cache[endpoint];
+    const res = await fetch(API_BASE + endpoint);
+    if (!res.ok) throw new Error('API ' + res.status + ' ' + endpoint);
+    cache[endpoint] = await res.json();
+    return cache[endpoint];
+  }
+
+  /* ============================================================
+     SVG ICON HELPER
+     ============================================================ */
+  const ICONS = {
+    quote: '<path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>',
+    briefcase: '<rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+    calendar: '<rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/>',
+    github: '<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>',
+    'external-link': '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+    award: '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
+    hash: '<line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/>',
+    'calendar-days': '<rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>',
+    'arrow-right': '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  };
+
+  function icon(name, size = 16, color = 'currentColor') {
+    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="' + color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[name] || '') + '</svg>';
+  }
+
+  /* ============================================================
+     SKILL ICON LOOKUP  (SimpleIcons CDN)
+     ============================================================ */
+  const SKILL_ICON_SLUG = {
+    'python': 'python', 'sql': 'mysql', 'r': 'r',
+    'fastapi': 'fastapi', 'langchain': 'langchain', 'langgraph': 'langgraph',
+    'crewai': 'crewai', 'streamlit': 'streamlit', 'scikit-learn': 'scikitlearn',
+    ' scikit-learn': 'scikitlearn', 'matplotlib': 'python', 'pandas / numpy': 'pandas',
+    'mysql': 'mysql', 'postgresql': 'postgresql', 'mongodb': 'mongodb',
+    'qdrantdb': 'qdrant', 'git & github': 'github', 'milvus vector db': 'milvus',
+    'postman': 'postman',
+    'aws ai (bedrock, sagemaker, lex, polly, comprehend)': 'amazonaws',
+    'aws compute(ec2, ecs, eks, lambda, etc.)': 'amazonaws',
+    'aws storage (s3, rds, dynamodb, ebs, etc.)': 'amazonaws',
+    'generative ai': 'openai', 'agentic ai': 'probot',
+    'rag pipelines': 'mediapipe', 'data pipeline orchestration': 'mediapipe',
+    'data analytics': 'googleanalytics', 'system design': 'circuitverse',
+    'microservices architecture': 'linkerd', 'rest apis': 'fastapi', 'agile / scrum': 'jira',
+  };
+
+  const BADGE_CLASS = {
+    Expert: 'badge-expert', Advanced: 'badge-advanced',
+    Intermediate: 'badge-intermediate', Beginner: 'badge-beginner',
+  };
+  const BADGE_FALLBACK_STYLE = {
+    Expert:       'background:var(--brown-700);color:var(--cream)',
+    Advanced:     'background:var(--brown-500);color:var(--cream)',
+    Intermediate: 'background:var(--beige-400);color:var(--brown-900)',
+    Beginner:     'background:var(--beige-200);color:var(--brown-700)',
+  };
+
+  function skillIconHtml(name) {
+    const slug = SKILL_ICON_SLUG[name.trim().toLowerCase()];
+    if (slug) {
+      return '<img src="https://cdn.simpleicons.org/' + slug + '" alt="' + esc(name) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+           + '<div class="skill-icon-fallback" style="display:none;' + (BADGE_FALLBACK_STYLE['Advanced'] || '') + '">' + initials(name) + '</div>';
+    }
+    return '<div class="skill-icon-fallback" style="' + (BADGE_FALLBACK_STYLE['Intermediate'] || '') + '">' + initials(name) + '</div>';
+  }
+
+  function initials(name) {
+    return name.trim().split(/\s+/).slice(0, 2).map(function(w) { return (w[0] || '').toUpperCase(); }).join('');
+  }
+
+  /* ============================================================
+     UTILITY
+     ============================================================ */
+  function esc(str) {
+    return String(str)
+      .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;').replaceAll("'", '&#39;');
+  }
+
+  function formatDate(dateStr) {
+    var d = new Date(dateStr);
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function loadingHtml() {
+    return '<div class="loading"><div class="spinner"></div>Loading&hellip;</div>';
+  }
+
+  function errorHtml(msg) {
+    return '<div class="error-msg">' + esc(msg || 'Failed to load data. Please try again later.') + '</div>';
+  }
+
+  /* ============================================================
+     PAGE RENDERERS
+     ============================================================ */
+
+  /* ---- HOME ---- */
+  async function renderHome() {
+    var el = document.getElementById('page-home');
+    el.innerHTML = loadingHtml();
+    var profile;
+    try { profile = await fetchData('/api/v1/profile'); }
+    catch(e) { console.error(e); el.innerHTML = errorHtml(); return; }
+
+    var html = '';
+
+    /* Hero */
+    html += '<section class="hero-section">';
+    html += '<div class="container"><div class="hero-inner">';
+    html += '<div class="hero-text animate-fade-up">';
+    html += '<div class="hero-quote">';
+    html += '<span class="hero-quote-icon">' + icon('quote', 20, 'var(--brown-400)') + '</span>';
+    html += '<p class="hero-quote-text">' + esc(profile.quote) + '</p>';
+    html += '</div>';
+    html += '<h1 class="hero-name">' + esc(profile.name) + '</h1>';
+    html += '<p class="hero-title">' + esc(profile.title) + '</p>';
+    html += '<p class="hero-intro">' + esc(profile.introduction) + '</p>';
+    html += '</div>';
+    html += '<div class="avatar-wrapper"><div class="avatar">';
+    if (profile.avatar) {
+      html += '<img src="' + esc(profile.avatar) + '" alt="' + esc(profile.name) + '">';
+    } else {
+      html += '<span class="avatar-initial">' + esc(profile.name.charAt(0)) + '</span>';
+    }
+    html += '</div></div>';
+    html += '</div></div></section>';
+
+    /* Divider */
+    html += '<div class="container"><div class="section-divider-line-h"></div></div>';
+
+    /* Experience */
+    html += '<section class="experience-section">';
+    html += '<div class="container">';
+    html += '<h2 class="section-heading">Professional Experience</h2>';
+    html += '<p class="section-subheading">Where I&rsquo;ve worked and what I&rsquo;ve built</p>';
+    html += '<div class="timeline-wrapper">';
+    html += '<div class="timeline-v-line"></div>';
+    html += '<div class="timeline-items">';
+    (profile.experiences || []).forEach(function(exp, idx) {
+      html += '<div class="timeline-item animate-fade-up" style="animation-delay:' + (idx * 100) + 'ms">';
+      html += '<div class="timeline-dot">' + icon('briefcase', 16, 'var(--brown-600)') + '</div>';
+      html += '<div class="card exp-card flex-1">';
+      html += '<div class="exp-header">';
+      html += '<div><div class="exp-role">' + esc(exp.role) + '</div><div class="exp-company">' + esc(exp.company) + '</div></div>';
+      html += '<span class="exp-dates">' + icon('calendar', 14) + ' ' + esc(exp.start_date) + ' &mdash; ' + esc(exp.end_date) + '</span>';
+      html += '</div>';
+      html += '<p class="exp-desc">' + esc(exp.description) + '</p>';
+      html += '</div></div>';
+    });
+    html += '</div></div></div></section>';
+
+    /* Skills */
+    html += '<section class="skills-section">';
+    html += '<div class="container">';
+    html += '<h2 class="section-heading">Technical Skills</h2>';
+    html += '<p class="section-subheading">Technologies and tools I work with daily</p>';
+    html += '<div class="skills-grid">';
+    var skills = profile.skills || [];
+    skills.forEach(function(cat, idx) {
+      var isLastOdd = (idx === skills.length - 1) && (skills.length % 2 !== 0);
+      html += '<div class="skill-cat-card animate-fade-up' + (isLastOdd ? ' full-width' : '') + '" style="animation-delay:' + (idx * 80) + 'ms">';
+      html += '<p class="cat-label">' + esc(cat.category) + '</p>';
+      html += '<div class="skill-tiles' + (isLastOdd ? ' wide' : '') + '">';
+      (cat.skills || []).forEach(function(skill) {
+        var badgeClass = BADGE_CLASS[skill.level] || 'badge-beginner';
+        html += '<div class="skill-tile">';
+        html += '<div class="skill-icon">' + skillIconHtml(skill.name) + '</div>';
+        html += '<p class="skill-name">' + esc(skill.name.trim()) + '</p>';
+        if (skill.level) {
+          html += '<span class="skill-badge ' + badgeClass + '">' + esc(skill.level) + '</span>';
+        }
+        html += '</div>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div></div></section>';
+
+    el.innerHTML = html;
+  }
+
+  /* ---- PROJECTS ---- */
+  async function renderProjects() {
+    var el = document.getElementById('page-projects');
+    el.innerHTML = loadingHtml();
+    var projects;
+    try { projects = await fetchData('/api/v1/projects'); }
+    catch(e) { console.error(e); el.innerHTML = errorHtml(); return; }
+
+    var html = '<div class="page-section"><div class="container">';
+    html += '<h1 class="section-heading">My Projects</h1>';
+    html += '<p class="section-subheading">Things I&rsquo;ve built &mdash; side projects, open-source work, and professional highlights</p>';
+
+    if (!projects || projects.length === 0) {
+      html += '<p class="error-msg">No projects found.</p>';
+    } else {
+      html += '<div class="projects-grid">';
+      projects.forEach(function(project) {
+        html += '<article class="card project-card">';
+        html += '<div class="project-thumb">';
+        if (project.thumbnail) {
+          html += '<img src="' + esc(project.thumbnail) + '" alt="' + esc(project.title) + '" loading="lazy">';
+        } else {
+          html += '<div class="project-thumb-placeholder"><span>' + esc(project.title.charAt(0)) + '</span></div>';
+        }
+        html += '</div>';
+        html += '<div class="project-content">';
+        if (project.tags && project.tags.length) {
+          html += '<div class="project-tags">';
+          project.tags.forEach(function(t) { html += '<span class="tag">' + esc(t) + '</span>'; });
+          html += '</div>';
+        }
+        html += '<h3 class="project-title">' + esc(project.title) + '</h3>';
+        html += '<p class="project-desc">' + esc(project.description) + '</p>';
+        html += '<div class="project-contrib"><p class="project-contrib-label">My Contribution</p><p class="project-contrib-text">' + esc(project.contribution) + '</p></div>';
+        html += '<a href="' + esc(project.github_url) + '" target="_blank" rel="noopener noreferrer" class="btn-primary" style="width:100%;justify-content:center">';
+        html += icon('github', 16) + ' View on GitHub ' + icon('external-link', 14);
+        html += '</a>';
+        html += '</div></article>';
+      });
+      html += '</div>';
+    }
+    html += '</div></div>';
+    el.innerHTML = html;
+  }
+
+  /* ---- CERTIFICATIONS ---- */
+  async function renderCertifications() {
+    var el = document.getElementById('page-certifications');
+    el.innerHTML = loadingHtml();
+    var data;
+    try { data = await fetchData('/api/v1/certifications'); }
+    catch(e) { console.error(e); el.innerHTML = errorHtml(); return; }
+
+    var badges = data.badges || [];
+    var certs  = data.certificates || [];
+    var html   = '<div class="page-section"><div class="container">';
+    html += '<h1 class="section-heading">Certifications &amp; Badges</h1>';
+    html += '<p class="section-subheading">Professional certifications and credentials I&rsquo;ve earned</p>';
+
+    if (badges.length) {
+      html += '<section style="margin-bottom:4rem">';
+      html += '<h2 class="section-sub-heading"><span class="section-sub-heading-line"></span>Digital Badges</h2>';
+      html += '<div class="badges-grid">';
+      badges.forEach(function(badge) {
+        html += '<div class="card badge-card">';
+        html += '<a href="' + esc(badge.public_link) + '" target="_blank" rel="noopener noreferrer" class="badge-img-link" title="View ' + esc(badge.title) + ' badge">';
+        if (badge.badge_url) {
+          html += '<img src="' + esc(badge.badge_url) + '" alt="' + esc(badge.title) + '" loading="lazy">';
+        } else {
+          html += '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">' + icon('award', 40, 'var(--brown-400)') + '</div>';
+        }
+        html += '</a>';
+        html += '<h3 class="badge-title">' + esc(badge.title) + '</h3>';
+        html += '<p class="badge-issuer">' + esc(badge.issuer) + '</p>';
+        html += '<div class="badge-actions">';
+        html += '<a href="' + esc(badge.public_link) + '" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size:0.75rem;padding:0.5rem 1rem;justify-content:center">' + icon('external-link', 13) + ' View Badge</a>';
+        html += '<a href="' + esc(badge.exam_link) + '" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:0.5rem 1rem;justify-content:center">Get Certified</a>';
+        html += '</div></div>';
+      });
+      html += '</div></section>';
+    }
+
+    if (certs.length) {
+      html += '<section>';
+      html += '<h2 class="section-sub-heading"><span class="section-sub-heading-line"></span>Certificates</h2>';
+      html += '<div class="certs-list">';
+      certs.forEach(function(cert) {
+        html += '<article class="card cert-card">';
+        html += '<div class="cert-thumb">';
+        if (cert.thumbnail) {
+          html += '<img src="' + esc(cert.thumbnail) + '" alt="' + esc(cert.title) + '" loading="lazy">';
+        } else {
+          html += '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--beige-100),var(--brown-200))">' + icon('hash', 32, 'var(--brown-300)') + '</div>';
+        }
+        html += '</div>';
+        html += '<div class="cert-content">';
+        html += '<h3 class="cert-title">' + esc(cert.title) + '</h3>';
+        html += '<p class="cert-issuer">' + esc(cert.issuer) + '</p>';
+        html += '<div class="cert-meta">';
+        html += '<span class="cert-meta-item">' + icon('calendar-days', 13) + ' ' + esc(cert.issue_date) + '</span>';
+        html += '<span class="cert-meta-item">' + icon('hash', 13) + ' ' + esc(cert.credential_id) + '</span>';
+        html += '</div>';
+        html += '<div class="cert-actions">';
+        html += '<a href="' + esc(cert.credential_url) + '" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size:0.75rem;padding:0.5rem 1rem">' + icon('external-link', 13) + ' View Credential</a>';
+        html += '<a href="' + esc(cert.exam_link) + '" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.75rem;padding:0.5rem 1rem">Get Certified</a>';
+        html += '</div></div></article>';
+      });
+      html += '</div></section>';
+    }
+
+    html += '</div></div>';
+    el.innerHTML = html;
+  }
+
+  /* ---- BLOG ---- */
+  async function renderBlog() {
+    var el = document.getElementById('page-blog');
+    el.innerHTML = loadingHtml();
+    var posts;
+    try { posts = await fetchData('/api/v1/blog'); }
+    catch(e) { console.error(e); el.innerHTML = errorHtml(); return; }
+
+    var html = '<div class="page-section"><div class="container">';
+    html += '<h1 class="section-heading">Blog</h1>';
+    html += '<p class="section-subheading">Writing about software, systems, and lessons learned along the way</p>';
+
+    if (!posts || posts.length === 0) {
+      html += '<p class="error-msg">No posts yet. Check back soon!</p>';
+    } else {
+      html += '<div class="blog-list">';
+      posts.forEach(function(post) {
+        html += '<article class="card blog-card">';
+        html += '<div class="blog-thumb">';
+        if (post.thumbnail) {
+          html += '<img src="' + esc(post.thumbnail) + '" alt="' + esc(post.title) + '" loading="lazy">';
+        } else {
+          html += '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--beige-100),var(--brown-200))"><span style="font-family:\'Playfair Display\',serif;font-size:2.5rem;font-weight:700;color:var(--brown-300)">' + esc(post.title.charAt(0)) + '</span></div>';
+        }
+        html += '</div>';
+        html += '<div class="blog-content">';
+        if (post.tags && post.tags.length) {
+          html += '<div class="blog-tags">';
+          post.tags.forEach(function(t) { html += '<span class="tag">' + esc(t) + '</span>'; });
+          html += '</div>';
+        }
+        html += '<h3 class="blog-title">' + esc(post.title) + '</h3>';
+        html += '<div class="blog-date">' + icon('calendar-days', 13) + ' ' + formatDate(post.date) + '</div>';
+        html += '<p class="blog-desc">' + esc(post.description) + '</p>';
+        html += '<div class="blog-readmore"><span class="blog-readmore-link">Read more <span class="blog-arrow">' + icon('arrow-right', 14) + '</span></span></div>';
+        html += '</div></article>';
+      });
+      html += '</div>';
+    }
+    html += '</div></div>';
+    el.innerHTML = html;
+  }
+
+  /* ============================================================
+     NAVIGATION
+     ============================================================ */
+  var PAGES = ['home', 'projects', 'certifications', 'blog'];
+  var renderedPages = {};
+
+  function navigate(page) {
+    if (!PAGES.includes(page)) page = 'home';
+
+    /* Update page visibility */
+    PAGES.forEach(function(p) {
+      var el = document.getElementById('page-' + p);
+      if (el) el.classList.toggle('active', p === page);
+    });
+
+    /* Update desktop nav links */
+    PAGES.forEach(function(p) {
+      var btn = document.getElementById('nav-' + p);
+      if (btn) btn.classList.toggle('active', p === page);
+    });
+
+    /* Update mobile nav links */
+    PAGES.forEach(function(p) {
+      var btn = document.getElementById('mnav-' + p);
+      if (btn) btn.classList.toggle('active', p === page);
+    });
+
+    /* Update URL hash */
+    history.replaceState(null, '', '#' + page);
+
+    /* Scroll to top */
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    /* Render once */
+    if (!renderedPages[page]) {
+      renderedPages[page] = true;
+      if (page === 'home')           renderHome();
+      else if (page === 'projects')       renderProjects();
+      else if (page === 'certifications') renderCertifications();
+      else if (page === 'blog')           renderBlog();
+    }
+  }
+
+  /* ============================================================
+     MOBILE MENU
+     ============================================================ */
+  var mobileOpen = false;
+
+  function toggleMobile() {
+    mobileOpen = !mobileOpen;
+    document.getElementById('mobile-menu').classList.toggle('open', mobileOpen);
+    document.getElementById('icon-menu').style.display  = mobileOpen ? 'none'         : 'inline-block';
+    document.getElementById('icon-close').style.display = mobileOpen ? 'inline-block' : 'none';
+  }
+
+  function closeMobile() {
+    mobileOpen = false;
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('icon-menu').style.display  = 'inline-block';
+    document.getElementById('icon-close').style.display = 'none';
+  }
+
+  /* ============================================================
+     HASH-BASED ROUTING
+     ============================================================ */
+  globalThis.addEventListener('hashchange', function() {
+    var page = location.hash.slice(1) || 'home';
+    navigate(page);
+  });
+
+  /* ============================================================
+     INIT
+     ============================================================ */
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+  var initialPage = location.hash.slice(1) || 'home';
+  navigate(initialPage);
+</script>
+</body>
+</html>
