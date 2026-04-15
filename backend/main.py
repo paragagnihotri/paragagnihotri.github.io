@@ -16,7 +16,7 @@ app = FastAPI(
 # CORS configuration — restrict in production to your frontend domain
 ALLOWED_ORIGINS = os.getenv(
     "ALLOWED_ORIGINS",
-    "http://localhost:3000,http://127.0.0.1:3000",
+    "http://localhost:3000,http://127.0.0.1:3000,https://paragagnihotri.github.io,https://paragagnihotri.vercel.app",
 ).split(",")
 
 app.add_middleware(
