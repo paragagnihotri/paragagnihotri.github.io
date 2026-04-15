@@ -28,10 +28,10 @@ app.add_middleware(
 )
 
 # Register routers
-app.include_router(home.router, prefix="/api", tags=["Profile"])
-app.include_router(projects.router, prefix="/api", tags=["Projects"])
-app.include_router(certifications.router, prefix="/api", tags=["Certifications"])
-app.include_router(blog.router, prefix="/api", tags=["Blog"])
+app.include_router(home.router, prefix="/api/v1", tags=["Profile"])
+app.include_router(projects.router, prefix="/api/v1", tags=["Projects"])
+app.include_router(certifications.router, prefix="/api/v1", tags=["Certifications"])
+app.include_router(blog.router, prefix="/api/v1", tags=["Blog"])
 
 
 @app.get("/health", tags=["Health"])

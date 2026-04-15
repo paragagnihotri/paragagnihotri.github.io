@@ -20,9 +20,8 @@ export default function Error({
         Something went wrong
       </h2>
       <p className="text-brown-500 mb-8 text-sm">
-        Could not load data. Make sure the backend is running at{" "}
+        Could not load data. Make sure the backend is running and try again.
         <code className="bg-beige-100 px-1.5 py-0.5 rounded text-brown-700">
-          http://localhost:8000
         </code>
       </p>
       <button onClick={reset} className="btn-primary">
