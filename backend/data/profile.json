@@ -1,8 +1,8 @@
 {
   "name": "Parag Agnihotri",
-  "title": "Associate Data Scientist",
-  "quote": "Building intelligent systems, one line at a time.",
-  "introduction": "I'm a passionate Software Engineer with expertise in designing scalable backend systems, building cloud-native applications, and delivering data-driven solutions. I thrive on turning complex problems into elegant, maintainable code — and I bring the same energy to every layer of the stack.",
+  "title": "Data Scientist",
+  "quote": "To be Added...",
+  "introduction": "Results-driven Data Scientist with 2+ years of progressive experience in architecting and deploying enterprise-grade AI solutions. Demonstrated expertise in conceptualizing and implementing Generative AI ecosystems, including Agentic AI frameworks and production-ready RAG pipelines, while fostering cross-functional collaboration with engineering and architecture teams. Adept at leveraging cutting-edge technologies such as LangChain, LangGraph, and CrewAI to orchestrate complex LLM workflows that drive measurable business outcomes. AWS-certified professional with a strategic focus on building resilient, scalable AI applications that bridge the gap between innovative research and practical deployment.",
   "avatar": null,
   "experiences": [
     {
@@ -10,7 +10,7 @@
       "role": "Associate Data Scientist",
       "start_date": "Aug 2024",
       "end_date": "Present",
-      "description": "Led the architecture and development of a microservices platform serving 2M+ active users. Reduced API latency by 40% through query optimization and caching strategies. Mentored a team of 4 junior engineers and drove adoption of CI/CD best practices.",
+      "description": "Designed and implemented enterprise-scale Generative AI and Agentic AI systems using LangChain, LangGraph, and CrewAI to address complex business challenges, while building and deploying production-grade RAG pipelines integrated with Milvus vector databases for high-performance semantic search and real-time retrieval. Developed custom tool integrations and context-aware execution frameworks for LLM orchestration, ensuring robust error handling, scalability, and observability. Collaborated closely with cross-functional teams to translate business requirements into scalable AI solutions and actively contributed to architectural reviews to ensure alignment with enterprise standards and long-term system reliability.",
       "logo": "https://e7.pngegg.com/pngimages/91/303/png-clipart-yash-technologies-pvt-ltd-gitex-business-technology-business-text-trademark.png"
     },
     {
@@ -18,7 +18,7 @@
       "role": "Data Science Intern",
       "start_date": "Jan 2024",
       "end_date": "Jun 2024",
-      "description": "Built RESTful APIs and real-time data pipelines processing 50GB+ daily. Integrated third-party services (Stripe, Twilio, SendGrid) and contributed to a platform migration from monolith to microservices. Improved test coverage from 40% to 85%.",
+      "description": "Built and validated machine learning models on large educational datasets using scikit-learn, pandas, and NumPy, executing end-to-end machine learning workflows that included data preprocessing, feature engineering, model selection, and hyperparameter tuning to ensure accurate, efficient, and scalable predictive performance.",
       "logo": "https://media.licdn.com/dms/image/v2/C560BAQEurnSUo3oWFw/company-logo_200_200/company-logo_200_200/0/1630603999936/smartknower_logo?e=2147483647&v=beta&t=fY0x5hraCuengeRA4Wq2_Qoynsz04qreKHFo17TYoRs"
     }
   ],
@@ -35,39 +35,47 @@
       "category": "Frameworks & Libraries",
       "skills": [
         { "name": "FastAPI", "level": "Expert" },
-        { "name": "Next.js", "level": "Advanced" },
-        { "name": "React", "level": "Advanced" },
-        { "name": "Django / DRF", "level": "Advanced" },
-        { "name": "Pandas / NumPy", "level": "Intermediate" }
+        { "name": "LangChain", "level": "Expert" },
+        { "name": "LangGraph", "level": "Expert" },
+        { "name": "CrewAI", "level": "Expert" },
+        { "name": "Streamlit", "level": "Intermediate" },
+        { "name": " scikit-learn", "level": "Advanced" },
+        { "name": "Matplotlib", "level": "Advanced" },
+        { "name": "Pandas / NumPy", "level": "Advanced" }
       ]
     },
     {
-      "category": "Databases",
+      "category": "Databases & Tools",
       "skills": [
-        { "name": "PostgreSQL", "level": "Advanced" },
+        { "name": "MySQL", "level": "Advanced" },
+        { "name": "PostgreSQL", "level": "Intermediate" },
         { "name": "MongoDB", "level": "Advanced" },
-        { "name": "Redis", "level": "Intermediate" },
-        { "name": "Elasticsearch", "level": "Intermediate" }
+        { "name": "Milvus Vector DB", "level": "Advanced" },
+        { "name": "QdrantDB", "level": "Advanced" },
+        { "name": "Git & GitHub", "level": "Advanced" },
+        { "name": "Postman", "level": "Advanced" }
       ]
     },
     {
       "category": "Cloud & DevOps",
       "skills": [
-        { "name": "AWS (EC2, S3, Lambda, RDS)", "level": "Advanced" },
-        { "name": "Docker", "level": "Advanced" },
-        { "name": "Kubernetes", "level": "Intermediate" },
-        { "name": "GitHub Actions / CI/CD", "level": "Advanced" },
-        { "name": "Terraform", "level": "Intermediate" }
+        { "name": "AWS AI (Bedrock, SageMaker, Lex, Polly, Comprehend)", "level": "Advanced" },
+        { "name": "AWS Compute(EC2, ECS, EKS, Lambda, etc.)", "level": "Advanced" },
+        { "name": "AWS Storage (S3, RDS, DynamoDB, EBS, etc.)", "level": "Advanced" }
       ]
     },
     {
       "category": "Core Concepts",
       "skills": [
-        { "name": "System Design", "level": "Advanced" },
+        { "name": "Generative AI", "level": "Advanced" },
+        { "name": "Agentic AI", "level": "Advanced" },
+        { "name": "RAG Pipelines", "level": "Advanced" },
+        { "name": "Data Pipeline Orchestration", "level": "Intermediate" },
+        { "name": "Data Analytics", "level": "Advanced" },
+        { "name": "System Design", "level": "Intermediate" },
         { "name": "Microservices Architecture", "level": "Advanced" },
-        { "name": "REST & GraphQL APIs", "level": "Expert" },
-        { "name": "Agile / Scrum", "level": "Advanced" },
-        { "name": "Test-Driven Development", "level": "Advanced" }
+        { "name": "REST APIs", "level": "Advanced" },
+        { "name": "Agile / Scrum", "level": "Advanced" }
       ]
     }
   ]
