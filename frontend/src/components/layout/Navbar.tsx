@@ -5,17 +5,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-const ALL_NAV_LINKS = [
+const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/certifications", label: "Certifications" },
   { href: "/blog", label: "Blog" },
-  { href: "/analytics", label: "Analytics", flag: "NEXT_PUBLIC_SHOW_ANALYTICS" },
+  { href: "/analytics", label: "Analytics" },
 ];
-
-const NAV_LINKS = ALL_NAV_LINKS.filter(
-  ({ flag }) => !flag || process.env[flag] === "true"
-);
 
 export default function Navbar() {
   const pathname = usePathname();
