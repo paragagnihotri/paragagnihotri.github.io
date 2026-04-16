@@ -75,6 +75,7 @@ export interface BlogPost {
   id: string;
   title: string;
   slug: string;
+  url?: string;
   thumbnail?: string;
   date: string;
   description: string;

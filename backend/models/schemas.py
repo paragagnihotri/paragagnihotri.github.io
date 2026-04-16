@@ -79,6 +79,7 @@ class BlogPost(BaseModel):
     id: str
     title: str
     slug: str
+    url: Optional[str] = None
     thumbnail: Optional[str] = None
     date: str
     description: str

@@ -17,7 +17,7 @@ function formatDate(dateStr: string): string {
 
 export default function BlogCard({ post }: Props) {
   return (
-    <article className="card flex flex-col sm:flex-row overflow-hidden group">
+    <article className="card flex flex-col sm:flex-row overflow-hidden group" aria-label={post.title}>
       {/* Thumbnail */}
       <div className="sm:w-56 sm:flex-shrink-0 h-44 sm:h-auto relative bg-brown-100 overflow-hidden">
         {post.thumbnail ? (
@@ -64,13 +64,22 @@ export default function BlogCard({ post }: Props) {
         </p>
 
         <div className="mt-4 pt-4 border-t border-brown-100">
-          <span className="inline-flex items-center gap-1.5 text-brown-600 text-sm font-medium group-hover:text-brown-900 transition-colors cursor-pointer">
-            Read more
-            <ArrowRight
-              size={14}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </span>
+          {post.url ? (
+            <a
+              href={post.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-brown-600 text-sm font-medium group-hover:text-brown-900 transition-colors"
+            >
+              Read on Medium
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 text-brown-600 text-sm font-medium group-hover:text-brown-900 transition-colors cursor-pointer">
+              Read more
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </span>
+          )}
         </div>
       </div>
     </article>
