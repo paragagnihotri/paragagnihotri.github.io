@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Download, Mail, X, Send, CheckCircle, Loader2 } from 'lucide-react';
 
 // ============================================================
@@ -32,9 +33,12 @@ type Status    = 'idle' | 'sending' | 'success' | 'error';
 
 export default function HeroButtons() {
   const [isOpen,   setIsOpen]   = useState(false);
+  const [mounted,  setMounted]  = useState(false);
   const [form,     setForm]     = useState<FormState>({ name: '', email: '', subject: '', message: '' });
   const [status,   setStatus]   = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => { setMounted(true); }, []);
 
   /* Lock body scroll while modal is open */
   useEffect(() => {
@@ -107,10 +111,10 @@ export default function HeroButtons() {
         </button>
       </div>
 
-      {/* ── Modal ── */}
-      {isOpen && (
+      {/* ── Modal (portal to document.body to escape transformed ancestors) ── */}
+      {mounted && isOpen && createPortal(
         <div
-          className="modal-backdrop-enter fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="modal-backdrop-enter fixed inset-0 z-[100] flex items-center justify-center p-4"
           style={{ background: 'rgba(44,24,16,0.55)', backdropFilter: 'blur(5px)' }}
           onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
         >
@@ -249,7 +253,8 @@ export default function HeroButtons() {
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
