@@ -1,4 +1,3 @@
-import { notFound } from "next/navigation";
 import { api } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -75,8 +74,6 @@ function SkillBar({
 }
 
 export default async function AnalyticsPage() {
-  if (process.env.NEXT_PUBLIC_SHOW_ANALYTICS !== "true") notFound();
-
   const [profile, projects, certData, posts] = await Promise.all([
     api.getProfile(),
     api.getProjects(),
