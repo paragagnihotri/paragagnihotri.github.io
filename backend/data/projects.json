@@ -1,21 +1,21 @@
 [
   {
     "id": "proj-001",
-    "title": "SmartInventory — AI-Powered Stock Manager",
-    "thumbnail": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-    "description": "A full-stack inventory management system with ML-based demand forecasting. Built a real-time dashboard with WebSocket updates, automated reorder triggers, and an admin panel for multi-warehouse management.",
-    "github_url": "https://github.com/paragagnihotri/smart-inventory",
-    "contribution": "Designed the entire backend architecture using FastAPI and PostgreSQL. Implemented the demand forecasting module using scikit-learn. Set up Docker Compose for local development and GitHub Actions for CI/CD.",
-    "tags": ["Python", "FastAPI", "PostgreSQL", "React", "ML", "Docker"]
+    "title": "Medextract — Clinical Assistant",
+    "thumbnail": "https://github.com/paragagnihotri/Medextract_Clinical_Assistant/blob/main/Medextract_Clinical_Assistant.png?raw=true",
+    "description": "A medical document intelligence application that extracts structured clinical data from healthcare documents using LangExtract and Google Gemini. Upload a clinical PDF, DOCX, or plain-text file and get back a structured PDF report, an interactive web dashboard, and a searchable SQLite database — all in seconds.",
+    "github_url": "https://github.com/paragagnihotri/Medextract_Clinical_Assistant",
+    "contribution": "Led the complete development of MedExtract Clinical Assistant, building both the user-friendly dashboard and the powerful backend from scratch. Integrated Google's LangExtract and Gemini AI to accurately pull structured medical data from various clinical documents. Designed key features like source verification, automated PDF reports, and local data storage—ensuring the tool is both practical and privacy-conscious. Owned the project end-to-end: from initial concept and architecture to coding, testing, and documentation.",
+    "tags": ["Python-FastAPI", "Google-gemini", "Langextract", "SQLite", "Streamlit"]
   },
   {
     "id": "proj-002",
-    "title": "DevPulse — Developer Productivity Tracker",
-    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-    "description": "A SaaS dashboard that aggregates GitHub, Jira, and Slack activity to give engineering teams visibility into productivity metrics, sprint velocity, and code review bottlenecks.",
-    "github_url": "https://github.com/paragagnihotri/devpulse",
-    "contribution": "Built the OAuth integrations for GitHub and Jira. Designed the metrics aggregation pipeline and REST API. Created interactive chart components using Recharts in Next.js.",
-    "tags": ["Next.js", "TypeScript", "Node.js", "OAuth", "Recharts", "PostgreSQL"]
+    "title": "RapidRead — PDF to Podcast Converter",
+    "thumbnail": "https://github.com/paragagnihotri/RapidRead-PDF2Podcast/blob/main/RapidRead-PDF2Podcast.png?raw=true",
+    "description": "The PDF to Podcast Converter is an AI-driven platform that transforms static documents into engaging, conversational podcast scripts and high-quality audio. By orchestrating a multi-agent CrewAI workflow, the system intelligently extracts key insights and restructures them into natural dialogue between two distinct speakers. The application combines a FastAPI backend with Edge TTS for realistic voice synthesis, all wrapped in an intuitive Streamlit dashboard. Users can seamlessly choose between rapid script generation or a complete audio podcast, making dense written content accessible and engaging.",
+    "github_url": "https://github.com/paragagnihotri/RapidRead-PDF2Podcast",
+    "contribution": "I independently architected and developed the full-stack application from initial concept to deployment, designing the multi-agent coordination pipeline and integrating CrewAI with Google Gemini. I engineered the complete backend services, built the interactive Streamlit interface, and implemented the Edge TTS workflow to generate synchronized dual-voice audio. I also established the RESTful API endpoints, optimized prompt structures for accurate dialogue generation, and ensured a reliable, production-ready user experience. This end-to-end ownership covered system design, agent orchestration, audio processing, and full-stack implementation.",
+    "tags": ["Python-FastAPI", "Google-gemini", "CrewAI", "Streamlit", "Microsoft Edge TTS"]
   },
   {
     "id": "proj-003",

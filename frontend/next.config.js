@@ -7,6 +7,7 @@ const nextConfig = {
       { protocol: "https", hostname: "**.githubusercontent.com" },
       { protocol: "https", hostname: "d2908q01vomqb2.cloudfront.net" },
       { protocol: "https", hostname: "**.medium.com" },
+      { protocol: "https", hostname: "github.com" }
     ],
   },
 };
