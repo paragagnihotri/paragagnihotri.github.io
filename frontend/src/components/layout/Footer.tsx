@@ -20,7 +20,7 @@ const SOCIAL_LINKS = [
     icon: Github,
     label: "GitHub",
     href: "https://github.com/paragagnihotri",
-    display: "agnihotriparag22",
+    display: "paragagnihotri",
   },
   {
     icon: Linkedin,

@@ -16,23 +16,5 @@
     "github_url": "https://github.com/paragagnihotri/RapidRead-PDF2Podcast",
     "contribution": "I independently architected and developed the full-stack application from initial concept to deployment, designing the multi-agent coordination pipeline and integrating CrewAI with Google Gemini. I engineered the complete backend services, built the interactive Streamlit interface, and implemented the Edge TTS workflow to generate synchronized dual-voice audio. I also established the RESTful API endpoints, optimized prompt structures for accurate dialogue generation, and ensured a reliable, production-ready user experience. This end-to-end ownership covered system design, agent orchestration, audio processing, and full-stack implementation.",
     "tags": ["Python-FastAPI", "Google-gemini", "CrewAI", "Streamlit", "Microsoft Edge TTS"]
-  },
-  {
-    "id": "proj-003",
-    "title": "ChatterBot — Real-Time Chat Application",
-    "thumbnail": "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600&q=80",
-    "description": "A scalable real-time messaging platform supporting private DMs, group rooms, file sharing, and end-to-end encryption. Handles 10,000+ concurrent connections with horizontal scaling.",
-    "github_url": "https://github.com/paragagnihotri/chatterbot",
-    "contribution": "Architected the WebSocket server using FastAPI and Redis Pub/Sub for fan-out messaging. Implemented JWT-based authentication and rate limiting middleware.",
-    "tags": ["FastAPI", "WebSockets", "Redis", "React", "JWT", "Docker"]
-  },
-  {
-    "id": "proj-004",
-    "title": "CloudBilling — AWS Cost Analytics Tool",
-    "thumbnail": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-    "description": "An internal tool that parses AWS Cost Explorer data, maps costs to teams and services, and generates weekly reports with anomaly detection alerts sent via Slack.",
-    "github_url": "https://github.com/paragagnihotri/cloud-billing",
-    "contribution": "Wrote the AWS Cost Explorer ingestion scripts and anomaly detection logic. Built the Slack notification bot and automated weekly PDF report generation using ReportLab.",
-    "tags": ["Python", "AWS", "Boto3", "Pandas", "Slack API", "ReportLab"]
   }
 ]
