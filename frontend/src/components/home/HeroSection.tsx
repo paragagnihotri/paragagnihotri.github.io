@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Quote } from "lucide-react";
 import type { Profile } from "@/types";
 import HeroButtons from "./HeroButtons";
+import LinkedInBadgeModal from "@/components/layout/LinkedInBadge";
 
 interface Props {
   readonly profile: Profile;
@@ -41,22 +42,26 @@ export default function HeroSection({ profile }: Props) {
           <HeroButtons />
         </div>
 
-        {/* Avatar */}
+        {/* Avatar — click to open LinkedIn badge popup */}
         <div className="flex-shrink-0">
-          <div className="w-56 h-56 md:w-64 md:h-64 rounded-full bg-brown-100 border-4 border-brown-200 shadow-warm-lg overflow-hidden flex items-center justify-center">
-            {profile.avatar ? (
-              <Image
-                src={profile.avatar}
-                alt={profile.name}
-                width={256}
-                height={256}
-                className="object-cover w-full h-full"
-              />
-            ) : (
-              <span className="font-serif text-7xl font-bold text-brown-300 select-none">
-                {profile.name.charAt(0)}
-              </span>
-            )}
+          <div className="w-56 h-56 md:w-64 md:h-64 rounded-full bg-brown-100 border-4 border-brown-200 shadow-warm-lg overflow-hidden flex items-center justify-center hover:border-brown-500 hover:scale-105 transition-all duration-300 cursor-pointer">
+            <LinkedInBadgeModal
+              trigger={
+                profile.avatar ? (
+                  <Image
+                    src={profile.avatar}
+                    alt={profile.name}
+                    width={256}
+                    height={256}
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <span className="font-serif text-7xl font-bold text-brown-300 select-none">
+                    {profile.name.charAt(0)}
+                  </span>
+                )
+              }
+            />
           </div>
         </div>
       </div>
