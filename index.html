@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
-  <style>
+<style>
     /* ===== DESIGN TOKENS ===== */
     :root {
       --cream: #FDFAF6;
@@ -162,6 +162,33 @@
     .hero-title { color: var(--brown-500); font-size: 1.25rem; font-weight: 500; margin-bottom: 1.5rem; }
     .hero-intro { color: var(--brown-700); font-size: 1rem; line-height: 1.75; max-width: 36rem; }
     .avatar-wrapper { flex-shrink: 0; }
+    .avatar-btn {
+      padding: 0; border: 4px solid var(--brown-200); border-radius: 9999px;
+      cursor: pointer; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      background: none;
+    }
+    .avatar-btn:hover { border-color: var(--brown-500); transform: scale(1.04); box-shadow: var(--shadow-warm-lg); }
+    /* LinkedIn popup */
+    .li-modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(44,24,16,0.55); backdrop-filter: blur(5px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .li-modal-overlay.li-open { animation: modalFadeIn 0.25s ease forwards; }
+    .li-modal {
+      background: white; border-radius: 1.25rem; box-shadow: 0 8px 40px 0 rgba(107,66,38,0.2);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .li-modal-overlay.li-open .li-modal { animation: modalSlideUp 0.3s ease forwards; }
+    .li-modal-close-row {
+      width: 100%; display: flex; justify-content: flex-end; padding: 0.75rem 0.75rem 0;
+    }
+    .li-modal-close {
+      padding: 0.375rem; border-radius: 0.5rem; background: none; border: none;
+      cursor: pointer; color: var(--brown-400); transition: all 0.2s;
+    }
+    .li-modal-close:hover { color: var(--brown-700); background: var(--brown-100); }
+    .li-modal-body { padding: 0.5rem 1.5rem 1.5rem; }
     .avatar {
       width: 14rem; height: 14rem; border-radius: 9999px; background: var(--brown-100);
       border: 4px solid var(--brown-200); box-shadow: var(--shadow-warm-lg);
@@ -964,13 +991,13 @@
     html += '<button class="btn-outline" onclick="openContactModal()">' + icon('mail', 16) + ' Contact Me</button>';
     html += '</div>';
     html += '</div>';
-    html += '<div class="avatar-wrapper"><div class="avatar">';
+    html += '<div class="avatar-wrapper"><button class="avatar avatar-btn" onclick="openLinkedInModal()" title="View LinkedIn Profile" aria-label="View LinkedIn Profile">';
     if (profile.avatar) {
       html += '<img src="' + esc(profile.avatar) + '" alt="' + esc(profile.name) + '">';
     } else {
       html += '<span class="avatar-initial">' + esc(profile.name.charAt(0)) + '</span>';
     }
-    html += '</div></div>';
+    html += '</button></div>';
     html += '</div></div></section>';
 
     /* Divider */
@@ -1414,6 +1441,31 @@
      ============================================================ */
   var contactModalOpen = false;
 
+  var liModalOpen = false;
+
+  function openLinkedInModal() {
+    var el = document.getElementById('li-modal-overlay');
+    el.style.display = 'flex';
+    void el.offsetWidth; /* force reflow so animation triggers cleanly */
+    el.classList.add('li-open');
+    document.body.style.overflow = 'hidden';
+    liModalOpen = true;
+    /* Re-run the LinkedIn badge renderer now that the div is visible */
+    if (window.LI && typeof window.LI.init === 'function') window.LI.init();
+  }
+
+  function closeLinkedInModal() {
+    var el = document.getElementById('li-modal-overlay');
+    el.classList.remove('li-open');
+    el.style.display = 'none';
+    document.body.style.overflow = '';
+    liModalOpen = false;
+  }
+
+  function handleLiOverlayClick(e) {
+    if (e.target === e.currentTarget) closeLinkedInModal();
+  }
+
   function openContactModal() {
     document.getElementById('contact-modal-overlay').style.display = 'flex';
     document.getElementById('contact-form-view').style.display     = 'block';
@@ -1436,7 +1488,9 @@
   }
 
   globalThis.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && contactModalOpen) closeContactModal();
+    if (e.key !== 'Escape') return;
+    if (liModalOpen) closeLinkedInModal();
+    else if (contactModalOpen) closeContactModal();
   });
 
   async function sendContactEmailJS(templateId, params) {
@@ -1491,6 +1545,24 @@
     }
   }
 </script>
+
+<!-- ========== LINKEDIN BADGE MODAL ========== -->
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<div id="li-modal-overlay" class="li-modal-overlay" style="display:none" onclick="handleLiOverlayClick(event)">
+  <div class="li-modal">
+    <div class="li-modal-close-row">
+      <button class="li-modal-close" onclick="closeLinkedInModal()" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="li-modal-body">
+      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="agnihotriparag" data-version="v1">
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ========== CONTACT MODAL ========== -->
 <div id="contact-modal-overlay" class="contact-overlay" style="display:none"
