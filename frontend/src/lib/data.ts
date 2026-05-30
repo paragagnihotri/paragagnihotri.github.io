@@ -3,7 +3,7 @@ import type { Profile, Project, CertificationsData } from "@/types";
 export const profileData: Profile = {
   name: "Parag Agnihotri",
   title: "Data Scientist",
-  quote: "To be Added...",
+  quote: "YOU BECOME WHAT YOU BELIEVE",
   introduction:
     "Results-driven Data Scientist with 2+ years of progressive experience in architecting and deploying enterprise-grade AI solutions. Demonstrated expertise in conceptualizing and implementing Generative AI ecosystems, including Agentic AI frameworks and production-ready RAG pipelines, while fostering cross-functional collaboration with engineering and architecture teams. Adept at leveraging cutting-edge technologies such as LangChain, LangGraph, and CrewAI to orchestrate complex LLM workflows that drive measurable business outcomes. AWS-certified professional with a strategic focus on building resilient, scalable AI applications that bridge the gap between innovative research and practical deployment.",
   avatar:
@@ -120,11 +120,11 @@ export const projectsData: Project[] = [
     thumbnail:
       "https://github.com/paragagnihotri/Medextract_Clinical_Assistant/blob/main/Medextract_Clinical_Assistant.png?raw=true",
     description:
-      "A medical document intelligence application that extracts structured clinical data from healthcare documents using LangExtract and Google Gemini. Upload a clinical PDF, DOCX, or plain-text file and get back a structured PDF report, an interactive web dashboard, and a searchable SQLite database — all in seconds.",
+      "MedExtract is a medical document intelligence app that parses clinical PDFs, DOCX, and plain-text files to extract structured patient data using LangExtract and Google Gemini. In seconds it produces a formatted PDF report, an interactive Streamlit dashboard, and a searchable SQLite database — eliminating manual transcription and reducing administrative overhead for healthcare workflows.",
     github_url:
       "https://github.com/paragagnihotri/Medextract_Clinical_Assistant",
     contribution:
-      "Led the complete development of MedExtract Clinical Assistant, building both the user-friendly dashboard and the powerful backend from scratch. Integrated Google's LangExtract and Gemini AI to accurately pull structured medical data from various clinical documents. Designed key features like source verification, automated PDF reports, and local data storage—ensuring the tool is both practical and privacy-conscious. Owned the project end-to-end: from initial concept and architecture to coding, testing, and documentation.",
+      "Architected and built the entire application solo — from FastAPI backend to Streamlit frontend. Integrated Google LangExtract and Gemini AI for accurate clinical entity recognition, and designed the source-citation layer to flag low-confidence extractions. Engineered automated PDF report generation, SQLite persistence, and a one-click dashboard. Owned every phase: system design, prompt engineering, testing, and documentation — delivering a privacy-conscious, production-ready tool.",
     tags: [
       "Python-FastAPI",
       "Google-gemini",
@@ -139,10 +139,10 @@ export const projectsData: Project[] = [
     thumbnail:
       "https://github.com/paragagnihotri/RapidRead-PDF2Podcast/blob/main/RapidRead-PDF2Podcast.png?raw=true",
     description:
-      "The PDF to Podcast Converter is an AI-driven platform that transforms static documents into engaging, conversational podcast scripts and high-quality audio. By orchestrating a multi-agent CrewAI workflow, the system intelligently extracts key insights and restructures them into natural dialogue between two distinct speakers. The application combines a FastAPI backend with Edge TTS for realistic voice synthesis, all wrapped in an intuitive Streamlit dashboard. Users can seamlessly choose between rapid script generation or a complete audio podcast, making dense written content accessible and engaging.",
+      "RapidRead is an AI-driven platform that converts static PDFs into engaging podcast-style audio. A multi-agent CrewAI workflow extracts key insights and rewrites them as natural two-speaker dialogue, which Microsoft Edge TTS then synthesises into high-quality audio. Built on a FastAPI backend with a Streamlit dashboard, it lets users choose between a rapid script preview or a full downloadable podcast — making dense documents accessible on the go.",
     github_url: "https://github.com/paragagnihotri/RapidRead-PDF2Podcast",
     contribution:
-      "I independently architected and developed the full-stack application from initial concept to deployment, designing the multi-agent coordination pipeline and integrating CrewAI with Google Gemini. I engineered the complete backend services, built the interactive Streamlit interface, and implemented the Edge TTS workflow to generate synchronized dual-voice audio. I also established the RESTful API endpoints, optimized prompt structures for accurate dialogue generation, and ensured a reliable, production-ready user experience. This end-to-end ownership covered system design, agent orchestration, audio processing, and full-stack implementation.",
+      "Independently designed and shipped the full-stack application end-to-end. Architected the multi-agent CrewAI pipeline and integrated it with Google Gemini for context-aware dialogue generation. Built all FastAPI backend services and RESTful endpoints, crafted the Streamlit interface, and implemented the Edge TTS audio synthesis workflow for synchronized dual-voice output. Tuned prompt structures for natural conversation flow and hardened the system for reliable, production-grade performance throughout.",
     tags: [
       "Python-FastAPI",
       "Google-gemini",
