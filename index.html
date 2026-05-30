@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
-  <style>
+<style>
     /* ===== DESIGN TOKENS ===== */
     :root {
       --cream: #FDFAF6;
@@ -162,6 +162,33 @@
     .hero-title { color: var(--brown-500); font-size: 1.25rem; font-weight: 500; margin-bottom: 1.5rem; }
     .hero-intro { color: var(--brown-700); font-size: 1rem; line-height: 1.75; max-width: 36rem; }
     .avatar-wrapper { flex-shrink: 0; }
+    .avatar-btn {
+      padding: 0; border: 4px solid var(--brown-200); border-radius: 9999px;
+      cursor: pointer; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      background: none;
+    }
+    .avatar-btn:hover { border-color: var(--brown-500); transform: scale(1.04); box-shadow: var(--shadow-warm-lg); }
+    /* LinkedIn popup */
+    .li-modal-overlay {
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(44,24,16,0.55); backdrop-filter: blur(5px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+    }
+    .li-modal-overlay.li-open { animation: modalFadeIn 0.25s ease forwards; }
+    .li-modal {
+      background: white; border-radius: 1.25rem; box-shadow: 0 8px 40px 0 rgba(107,66,38,0.2);
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .li-modal-overlay.li-open .li-modal { animation: modalSlideUp 0.3s ease forwards; }
+    .li-modal-close-row {
+      width: 100%; display: flex; justify-content: flex-end; padding: 0.75rem 0.75rem 0;
+    }
+    .li-modal-close {
+      padding: 0.375rem; border-radius: 0.5rem; background: none; border: none;
+      cursor: pointer; color: var(--brown-400); transition: all 0.2s;
+    }
+    .li-modal-close:hover { color: var(--brown-700); background: var(--brown-100); }
+    .li-modal-body { padding: 0.5rem 1.5rem 1.5rem; }
     .avatar {
       width: 14rem; height: 14rem; border-radius: 9999px; background: var(--brown-100);
       border: 4px solid var(--brown-200); box-shadow: var(--shadow-warm-lg);
@@ -505,7 +532,7 @@
             <li>
               <a href="https://github.com/paragagnihotri" target="_blank" rel="noopener noreferrer" class="footer-link">
                 <span class="footer-link-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span>
-                <span>agnihotriparag22</span>
+                <span>paragagnihotri</span>
               </a>
             </li>
             <li>
@@ -539,7 +566,7 @@
     '/api/v1/profile': {
       "name": "Parag Agnihotri",
       "title": "Data Scientist",
-      "quote": "To be Added...",
+      "quote": "YOU BECOME WHAT YOU BELIEVE",
       "introduction": "Results-driven Data Scientist with 2+ years of progressive experience in architecting and deploying enterprise-grade AI solutions. Demonstrated expertise in conceptualizing and implementing Generative AI ecosystems, including Agentic AI frameworks and production-ready RAG pipelines, while fostering cross-functional collaboration with engineering and architecture teams. Adept at leveraging cutting-edge technologies such as LangChain, LangGraph, and CrewAI to orchestrate complex LLM workflows that drive measurable business outcomes. AWS-certified professional with a strategic focus on building resilient, scalable AI applications that bridge the gap between innovative research and practical deployment.",
       "avatar": "https://github.com/paragagnihotri/resume/blob/main/pfp.jpg?raw=true",
       "experiences": [
@@ -639,18 +666,18 @@
         "id": "proj-001",
         "title": "Medextract — Clinical Assistant",
         "thumbnail": "https://github.com/paragagnihotri/Medextract_Clinical_Assistant/blob/main/Medextract_Clinical_Assistant.png?raw=true",
-        "description": "A medical document intelligence application that extracts structured clinical data from healthcare documents using LangExtract and Google Gemini. Upload a clinical PDF, DOCX, or plain-text file and get back a structured PDF report, an interactive web dashboard, and a searchable SQLite database — all in seconds.",
+        "description": "MedExtract is a medical document intelligence app that parses clinical PDFs, DOCX, and plain-text files to extract structured patient data using LangExtract and Google Gemini. In seconds it produces a formatted PDF report, an interactive Streamlit dashboard, and a searchable SQLite database — eliminating manual transcription and reducing administrative overhead for healthcare workflows.",
         "github_url": "https://github.com/paragagnihotri/Medextract_Clinical_Assistant",
-        "contribution": "Led the complete development of MedExtract Clinical Assistant, building both the user-friendly dashboard and the powerful backend from scratch. Integrated Google's LangExtract and Gemini AI to accurately pull structured medical data from various clinical documents. Designed key features like source verification, automated PDF reports, and local data storage—ensuring the tool is both practical and privacy-conscious. Owned the project end-to-end: from initial concept and architecture to coding, testing, and documentation.",
+        "contribution": "Architected and built the entire application solo — from FastAPI backend to Streamlit frontend. Integrated Google LangExtract and Gemini AI for accurate clinical entity recognition, and designed the source-citation layer to flag low-confidence extractions. Engineered automated PDF report generation, SQLite persistence, and a one-click dashboard. Owned every phase: system design, prompt engineering, testing, and documentation — delivering a privacy-conscious, production-ready tool.",
         "tags": ["Python-FastAPI", "Google-gemini", "Langextract", "SQLite", "Streamlit"]
       },
       {
         "id": "proj-002",
         "title": "RapidRead — PDF to Podcast Converter",
         "thumbnail": "https://github.com/paragagnihotri/RapidRead-PDF2Podcast/blob/main/RapidRead-PDF2Podcast.png?raw=true",
-        "description": "The PDF to Podcast Converter is an AI-driven platform that transforms static documents into engaging, conversational podcast scripts and high-quality audio. By orchestrating a multi-agent CrewAI workflow, the system intelligently extracts key insights and restructures them into natural dialogue between two distinct speakers. The application combines a FastAPI backend with Edge TTS for realistic voice synthesis, all wrapped in an intuitive Streamlit dashboard. Users can seamlessly choose between rapid script generation or a complete audio podcast, making dense written content accessible and engaging.",
+        "description": "RapidRead is an AI-driven platform that converts static PDFs into engaging podcast-style audio. A multi-agent CrewAI workflow extracts key insights and rewrites them as natural two-speaker dialogue, which Microsoft Edge TTS then synthesises into high-quality audio. Built on a FastAPI backend with a Streamlit dashboard, it lets users choose between a rapid script preview or a full downloadable podcast — making dense documents accessible on the go.",
         "github_url": "https://github.com/paragagnihotri/RapidRead-PDF2Podcast",
-        "contribution": "I independently architected and developed the full-stack application from initial concept to deployment, designing the multi-agent coordination pipeline and integrating CrewAI with Google Gemini. I engineered the complete backend services, built the interactive Streamlit interface, and implemented the Edge TTS workflow to generate synchronized dual-voice audio. I also established the RESTful API endpoints, optimized prompt structures for accurate dialogue generation, and ensured a reliable, production-ready user experience. This end-to-end ownership covered system design, agent orchestration, audio processing, and full-stack implementation.",
+        "contribution": "Independently designed and shipped the full-stack application end-to-end. Architected the multi-agent CrewAI pipeline and integrated it with Google Gemini for context-aware dialogue generation. Built all FastAPI backend services and RESTful endpoints, crafted the Streamlit interface, and implemented the Edge TTS audio synthesis workflow for synchronized dual-voice output. Tuned prompt structures for natural conversation flow and hardened the system for reliable, production-grade performance throughout.",
         "tags": ["Python-FastAPI", "Google-gemini", "CrewAI", "Streamlit", "Microsoft Edge TTS"]
       }
     ],
@@ -964,13 +991,13 @@
     html += '<button class="btn-outline" onclick="openContactModal()">' + icon('mail', 16) + ' Contact Me</button>';
     html += '</div>';
     html += '</div>';
-    html += '<div class="avatar-wrapper"><div class="avatar">';
+    html += '<div class="avatar-wrapper"><button class="avatar avatar-btn" onclick="openLinkedInModal()" title="View LinkedIn Profile" aria-label="View LinkedIn Profile">';
     if (profile.avatar) {
       html += '<img src="' + esc(profile.avatar) + '" alt="' + esc(profile.name) + '">';
     } else {
       html += '<span class="avatar-initial">' + esc(profile.name.charAt(0)) + '</span>';
     }
-    html += '</div></div>';
+    html += '</button></div>';
     html += '</div></div></section>';
 
     /* Divider */
@@ -1212,7 +1239,7 @@
         html += '<h3 class="blog-title">' + esc(post.title) + '</h3>';
         html += '<div class="blog-date">' + icon('calendar-days', 13) + ' ' + formatDate(post.date) + '</div>';
         html += '<p class="blog-desc">' + esc(post.description) + '</p>';
-        html += '<div class="blog-readmore"><span class="blog-readmore-link">Read more <span class="blog-arrow">' + icon('arrow-right', 14) + '</span></span></div>';
+        html += '<div class="blog-readmore"><a href="' + esc(post.url) + '" target="_blank" rel="noopener noreferrer" class="blog-readmore-link">Read more <span class="blog-arrow">' + icon('arrow-right', 14) + '</span></a></div>';
         html += '</div></article>';
       });
       html += '</div>';
@@ -1414,6 +1441,31 @@
      ============================================================ */
   var contactModalOpen = false;
 
+  var liModalOpen = false;
+
+  function openLinkedInModal() {
+    var el = document.getElementById('li-modal-overlay');
+    el.style.display = 'flex';
+    void el.offsetWidth; /* force reflow so animation triggers cleanly */
+    el.classList.add('li-open');
+    document.body.style.overflow = 'hidden';
+    liModalOpen = true;
+    /* Re-run the LinkedIn badge renderer now that the div is visible */
+    if (window.LI && typeof window.LI.init === 'function') window.LI.init();
+  }
+
+  function closeLinkedInModal() {
+    var el = document.getElementById('li-modal-overlay');
+    el.classList.remove('li-open');
+    el.style.display = 'none';
+    document.body.style.overflow = '';
+    liModalOpen = false;
+  }
+
+  function handleLiOverlayClick(e) {
+    if (e.target === e.currentTarget) closeLinkedInModal();
+  }
+
   function openContactModal() {
     document.getElementById('contact-modal-overlay').style.display = 'flex';
     document.getElementById('contact-form-view').style.display     = 'block';
@@ -1436,7 +1488,9 @@
   }
 
   globalThis.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && contactModalOpen) closeContactModal();
+    if (e.key !== 'Escape') return;
+    if (liModalOpen) closeLinkedInModal();
+    else if (contactModalOpen) closeContactModal();
   });
 
   async function sendContactEmailJS(templateId, params) {
@@ -1491,6 +1545,24 @@
     }
   }
 </script>
+
+<!-- ========== LINKEDIN BADGE MODAL ========== -->
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<div id="li-modal-overlay" class="li-modal-overlay" style="display:none" onclick="handleLiOverlayClick(event)">
+  <div class="li-modal">
+    <div class="li-modal-close-row">
+      <button class="li-modal-close" onclick="closeLinkedInModal()" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="li-modal-body">
+      <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="agnihotriparag" data-version="v1">
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ========== CONTACT MODAL ========== -->
 <div id="contact-modal-overlay" class="contact-overlay" style="display:none"
