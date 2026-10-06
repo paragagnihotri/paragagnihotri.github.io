@@ -157,7 +157,7 @@ export const certificationsData: CertificationsData = {
   badges: [
     {
       id: "badge-001",
-      title: "AWS Certified Generative AI Deveoper - Professional",
+      title: "AWS Certified Generative AI developer - Professional",
       issuer: "Amazon Web Services",
       badge_url:
         "https://images.credly.com/size/680x680/images/52c6e5ac-9516-4944-a4df-e31b23c9bbf2/blob",
@@ -169,7 +169,7 @@ export const certificationsData: CertificationsData = {
     {
       id: "badge-002",
       title:
-        "AWS Certified Generative AI Deveoper - Professional (Early Adopter)",
+        "AWS Certified Generative AI developer - Professional (Early Adopter)",
       issuer: "Amazon Web Services",
       badge_url:
         "https://images.credly.com/size/680x680/images/9de9a2f7-3259-4720-bb74-095563bb1e49/blob",
@@ -224,7 +224,7 @@ export const certificationsData: CertificationsData = {
   certificates: [
     {
       id: "cert-001",
-      title: "AWS Certified Generative AI Deveoper - Professional",
+      title: "AWS Certified Generative AI developer - Professional",
       issuer: "Amazon Web Services",
       credential_id: "5b96fb9125b84ba28f7a17efb5538edd",
       credential_url:
